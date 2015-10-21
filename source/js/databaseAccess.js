@@ -56,29 +56,29 @@ var getAudioDataObject = function(index)  {
 
 var getAudioData_audioFileName = function(index)  {
   var obj = getAudioDataObject(index);
-  return obj["audioFilename"];
+  return obj.audioFilename;
 };
 
 var getAudioData_locationName = function(index)  {
   var obj = getAudioDataObject(index);
-  return obj["locationName"];
+  return obj.locationName;
 };
 
 var getAudioData_rating = function(index)  {
   var obj = getAudioDataObject(index);
-  return obj["rating"];
+  return obj.rating;
 };
 
 var getAudioData_xpos = function(index)  {
   var obj = getAudioDataObject(index);
-  return obj["xpos"];
+  return obj.xpos;
 };
 
 var getAudioData_ypos = function(index)  {
   var obj = getAudioDataObject(index);
-  return obj["ypos"];
+  return obj.ypos;
 };
 
 var getDatabaseLength = function() {
   return audioDatabase.length;
-}
+};
