@@ -57,3 +57,57 @@ var muteToggle = function() {
   $('#muteButton').toggleClass("mutedMode");
   toggleMuteAudio();
 };
+
+
+
+// MAIN - ON.READY
+$(document).ready(function (){
+  jInit(); // Audio Player actions/listeners
+
+  $('#leftArrowButton').click(function(){    
+    moveLeft();
+  });
+
+  $('#rightArrowButton').click(function(){    
+    moveRight();
+  });
+
+  $('#muteButton').click(function(){
+    muteToggle();
+  });
+
+  // Listen for arrow keys
+  $(document).keydown(function(e) {
+    switch(e.which) {
+      case 37: // left
+      console.log("left");
+      moveLeft();
+      break;
+
+      case 38: // up
+      console.log("volume up");
+      muteToggle();
+      break;
+
+      case 39: // right
+      console.log("right");
+      moveRight();
+      break;
+
+      case 40: // down
+      console.log("volume down");
+      muteToggle();
+      break;
+
+      default: return; // exit this handler for other keys
+    }
+    // e.preventDefault(); // prevent the default action (scroll / move caret)
+  });
+
+
+
+  drawPinsWithSelection( 0 );
+});
+
+
+
