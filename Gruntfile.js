@@ -30,6 +30,14 @@ module.exports = function(grunt) {
       css: {
         files: '**/*.scss',
         tasks: ['sass']
+      },
+      html: {
+        files: 'source/*.html',
+        tasks: ['copy']
+      },
+      script: {
+        files: 'source/js/*.js',
+        tasks: ['concat','copy']
       }
     },
 
