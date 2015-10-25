@@ -1,26 +1,182 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
 body {
-  padding: 20px 50px 20px 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #81bcd9;
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.tagline {
-  position:relative;
-  top: -11px;
-  left: 3px;
-  font-size: 16.5px;
-  color: #025177;
+//
+// MOBILE MOBILE MOBILE //
+//
+
+/* OceanSoundscapes */
+
+// Color Table
+$medBlue:    #81bcd9;
+$lightBlue:  lighten( $medBlue, 15%);
+$deepBlue:   #025177;
+$bodyColor:  lighten( $medBlue, 90% );
+
+$boldRed:         #aa0033;
+$medGray:         #666;
+$black:           #111;
+$pureBlack:       #000;
+
+$buttonGray:      #ccd;
+
+$altTextColor:    $deepBlue;
+
+
+// Dimensions
+@function aspect($width) {
+  @return $width * 9 / 16; // ex. 562.5px
 }
 
-.centralContent {
+$centerContentWidth:    percentage((1000px-300px)/1000px);
+$centerContentHeight:   aspect($centerContentWidth);
+$leftNavWidth:          percentage(300px/1000px);
+$leftNavHeight:         $centerContentHeight;
+
+
+h1 {
+  font-size: 1.9em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.9em;
+  font-weight: bold;
+}
+
+
+/* Page Elements */
+body {
+  // padding: 20px 50px 20px 50px;
+  font: 62.5% "Verdana", Helvetica, Arial, sans-serif;
+  color: $black;
+  box-sizing: border-box;
+  background-color: $lightBlue;
+}
+
+.header { 
+  height: 80px;
+  width:  305px;
+  text-align: left;
+  padding-left: 15px;
+  position: relative;
+
+  img { 
+    position: absolute;
+    top:  8px;
+    left: 20px;
+  }
+
+  h1 {
+    font-size: 2.2em;
+    color: $altTextColor;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+  }
+
+}
+
+.contentWrapper {
+  width:  100%;
+  height: 550px;
+  background-color: lighten($medBlue, 10%);
+}
+
+.leftNav {
+  width: 100%;
+  min-width: 320px;
+  height: 550px;
+  background-color: $medBlue;
+
+  .subheader {
+    width:100%;
+    background-color: $deepBlue;
+    color:white;
+    margin:auto;
+    text-align:center;
+    line-height:25px;
+  }
+}
+
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: 320px;
+  overflow: auto;
+//  height: 550px;
+  background-color: Silver;
+}
+
+.flex-item {
+    background-color: DeepSkyBlue;
+    postion:absolute;
+    width: 320px;
+    height: 100px;
+    margin: 0px 0px;
+}
+
+
+/*.centralContent {
+  width:  $centerContentWidth;
+  height: 550px;
   margin: auto;
   padding: 30px 0 30px 0;
-  width: 800px;
-}
+  float:left;
+}*/
 
-a {
-  color: #00B7FF;
-}
 
 /* Clear-less */
 .group:before,
@@ -52,8 +208,9 @@ a {
   font-size: 20px
 }
 
+
 #worldMap {
-  width: 800px;
+  width:  800px;
   height: 400px;
   display: block;
   margin-left: auto;
@@ -65,44 +222,44 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
 
-  border: solid 3px #666;
+  border: solid 3px $medGray;
+
+display: none; // !!!!!
 }
+
 
 .arrowButton {
   width:126px;
   height:30px;
-  background-color: #CCD;
-  color:#111; // Default only
-}
-
-.arrowButton.disabled {
-  color:#999;
+  background-color: $buttonGray;
+  color: $black; // Default only
+  &.disabled {
+    color:#999;
+  }
 }
 
 .muteButton {
   width:60px;
   height:30px;
-  background-color: #CCD;
+  background-color: $buttonGray;
+  &.mutedMode {
+    color: $buttonGray;
+    background-color: $buttonGray;
+    -webkit-animation-name: mutedMode; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
+    animation-name: mutedMode;
+    animation-duration: 2s;
+    animation-iteration-count: 10000;
+  }
+  @keyframes mutedMode {
+      from {background-color: $boldRed;}
+      to {background-color:   $altTextColor;}
+  }
 }
-
-.mutedMode {
-  color: #CCD;
-  background-color: #333;
-  -webkit-animation-name: mutedMode; /* Chrome, Safari, Opera */
-  -webkit-animation-duration: 5s; /* Chrome, Safari, Opera */
-  animation-name: mutedMode;
-  animation-duration: 1s;
-  animation-iteration-count: 100;
-}
-@keyframes mutedMode {
-    from {background-color: #AA0033;}
-    to {background-color:   #025177;}
-}
-
 
 #nowPlayingMsg2 {
   font-weight: bold;
-  color: #AA0033;
+  color: $boldRed;
 }
 
 
@@ -121,26 +278,30 @@ a {
 }*/
 
 
-/* CENTER CONTENT AREA */
-
-/*.contentClass {
-  width:600px;
-  background-color: #ffd;
-  float:left;
-}*/
 
 /* FOOTER */
 
-/*.footerClass {
-  width:900px;
+.footerDiv {
+  width: 100%;
+  height: 20px;
   background-color: #dff;
-  float:left;
 }
-*/
 
 .copyright {
-  float:right;
-  padding-top: 5px;
+  margin: auto;
+  width: 100%;
   font-size: 0.7em;
-  color: #025177;
+  color: $altTextColor;
 }
+
+@media screen and (min-width: 640px) { 
+  // Limit leftNav to 320px again
+}
+
+@media screen and (min-width: 1200px) { 
+  #worldMap { display: block; }
+}
+
+
+
+

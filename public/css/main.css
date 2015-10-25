@@ -1,23 +1,128 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
 body {
-  padding: 20px 50px 20px 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* OceanSoundscapes */
+h1 {
+  font-size: 1.9em;
+  font-weight: bold; }
+
+h2 {
+  font-size: 1.9em;
+  font-weight: bold; }
+
+/* Page Elements */
+body {
+  font: 62.5% "Verdana", Helvetica, Arial, sans-serif;
+  color: #111;
+  box-sizing: border-box;
+  background-color: #bcdbeb; }
+
+.header {
+  height: 80px;
+  width: 305px;
+  text-align: left;
+  padding-left: 15px;
+  position: relative; }
+  .header img {
+    position: absolute;
+    top: 8px;
+    left: 20px; }
+  .header h1 {
+    font-size: 2.2em;
+    color: #025177;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%); }
+
+.contentWrapper {
+  width: 100%;
+  height: 550px;
+  background-color: #a8d1e5; }
+
+.leftNav {
+  width: 100%;
+  min-width: 320px;
+  height: 550px;
   background-color: #81bcd9; }
+  .leftNav .subheader {
+    width: 100%;
+    background-color: #025177;
+    color: white;
+    margin: auto;
+    text-align: center;
+    line-height: 25px; }
 
-.tagline {
-  position: relative;
-  top: -11px;
-  left: 3px;
-  font-size: 16.5px;
-  color: #025177; }
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: 320px;
+  overflow: auto;
+  background-color: Silver; }
 
-.centralContent {
+.flex-item {
+  background-color: DeepSkyBlue;
+  postion: absolute;
+  width: 320px;
+  height: 100px;
+  margin: 0px 0px; }
+
+/*.centralContent {
+  width:  $centerContentWidth;
+  height: 550px;
   margin: auto;
   padding: 30px 0 30px 0;
-  width: 800px; }
-
-a {
-  color: #00B7FF; }
-
+  float:left;
+}*/
 /* Clear-less */
 .group:before,
 .group:after {
@@ -56,41 +161,39 @@ a {
   background-color: #669;
   background-repeat: no-repeat;
   background-position: center center;
-  border: solid 3px #666; }
+  border: solid 3px #666;
+  display: none; }
 
 .arrowButton {
   width: 126px;
   height: 30px;
-  background-color: #CCD;
+  background-color: #ccd;
   color: #111; }
-
-.arrowButton.disabled {
-  color: #999; }
+  .arrowButton.disabled {
+    color: #999; }
 
 .muteButton {
   width: 60px;
   height: 30px;
-  background-color: #CCD; }
-
-.mutedMode {
-  color: #CCD;
-  background-color: #333;
-  -webkit-animation-name: mutedMode;
-  /* Chrome, Safari, Opera */
-  -webkit-animation-duration: 5s;
-  /* Chrome, Safari, Opera */
-  animation-name: mutedMode;
-  animation-duration: 1s;
-  animation-iteration-count: 100; }
-
+  background-color: #ccd; }
+  .muteButton.mutedMode {
+    color: #ccd;
+    background-color: #ccd;
+    -webkit-animation-name: mutedMode;
+    /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s;
+    /* Chrome, Safari, Opera */
+    animation-name: mutedMode;
+    animation-duration: 2s;
+    animation-iteration-count: 10000; }
 @keyframes mutedMode {
   from {
-    background-color: #AA0033; }
+    background-color: #aa0033; }
   to {
     background-color: #025177; } }
 #nowPlayingMsg2 {
   font-weight: bold;
-  color: #AA0033; }
+  color: #aa0033; }
 
 /* LEFT COLUMN */
 /*.ilStack {
@@ -104,23 +207,20 @@ a {
   background-color: #ddd;
   float:left;
 }*/
-/* CENTER CONTENT AREA */
-/*.contentClass {
-  width:600px;
-  background-color: #ffd;
-  float:left;
-}*/
 /* FOOTER */
-/*.footerClass {
-  width:900px;
-  background-color: #dff;
-  float:left;
-}
-*/
+.footerDiv {
+  width: 100%;
+  height: 20px;
+  background-color: #dff; }
+
 .copyright {
-  float: right;
-  padding-top: 5px;
+  margin: auto;
+  width: 100%;
   font-size: 0.7em;
   color: #025177; }
+
+@media screen and (min-width: 1200px) {
+  #worldMap {
+    display: block; } }
 
 /*# sourceMappingURL=main.css.map */

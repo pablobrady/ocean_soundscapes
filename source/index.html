@@ -1,12 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ocean Soundscapes</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"><!-- for fonts -->
 
     <link rel="stylesheet" href="css/main.css">
 
@@ -21,10 +19,13 @@
     
   </head>
   <body>
-    <h1>Ocean Soundscapes</h1>
-    <span class='tagline'>Distraction-free Background Audio</span>
+    <div class="header">
+      <img src="images/oceanSoundscape-icon-64x64.png" alt="">
+      <h1>Ocean Soundscapes</h1>
+      <!-- div class="tagline">Distraction-free Background Audio</div -->
 
-    <div>
+
+      <!-- 
       <button id="leftArrowButton" class="arrowButton disabled">&leftarrow; Previous</button>
       &nbsp;&nbsp;&nbsp;<button id="rightArrowButton" class="arrowButton"> Next &rightarrow;</button>
       &nbsp;&nbsp;<button id="muteButton" class="muteButton">Mute</button>
@@ -33,16 +34,54 @@
         <source src="../audio/ocean/164767__rucisko__ocean-waves_Coimbra_Portugal.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
+      -->
     </div>
 
-    <div class="centralContent">
-      <span id="nowPlayingMsg1" class="nowPlaying">Now playing ocean sounds from...</span>
-      <span id="nowPlayingMsg2" class="nowPlaying"></span>
-      <div id="worldMap">
-        <img id="pinId0" class="pin" src="images/pin3.png" style="position:relative;top:63px;left:20px;opacity:0">
+    <div class="contentWrapper group">
+      <div class="leftNav flex-container">
+        <div class="subheader">
+          PICK A LOCATION
+        </div>
+        <!-- span id="locationList"></span -->
+        <ul style="width:100%;">
+          <li style="height:100px;background-color:purple;border:solid 3px red;">
+            <span style="postion:absolute;right:0;botton:0">SAMPLE LOCATION #1!</span>
+          </li>
+          <li style="height:100px;background-color:orange;">
+            <a href="flexbox.html">Taco Menu</a>
+          </li>
+          <li style="height:100px;background-color:green;">
+            <a href="flexbox.html">Draft List</a>
+          </li>
+          <li style="height:100px;background-color:orange;">
+            <a href="flexbox.html">Taco Menu</a>
+          </li>
+          <li style="height:100px;background-color:green;">
+            <a href="flexbox.html">Draft List</a>
+          </li>
+          <li style="height:100px;background-color:purple;border:solid 3px red;">
+            <span style="postion:absolute;right:0;botton:0">SAMPLE LOCATION #1!</span>
+          </li>
+          <li style="height:100px;background-color:orange;">
+            <a href="flexbox.html">Taco Menu</a>
+          </li>
+          <li style="height:100px;background-color:green;">
+            <a href="flexbox.html">Draft List</a>
+          </li>
+        </ul>
+
       </div>
-      <div class="copyright">&copy; Paul Brady 2015</div>
-    </div>
+      <!-- div class="centralContent">
+        <span id="nowPlayingMsg1" class="nowPlaying">Now playing ocean sounds from...</span>
+        <span id="nowPlayingMsg2" class="nowPlaying"></span>
+        <div id="worldMap">
+          <img id="pinId0" class="pin" src="images/pin3.png" style="position:relative;top:63px;left:20px;opacity:0">
+        </div>
+      </div>
+    </div -->
+  </div><!-- div class="footerDiv">
+    <span class="copyright">&nbsp;&copy; 2015 Paul Brady</span>
+  </div -->
 
     <script src="js/OceanSounds_all.min.js"></script>
 
