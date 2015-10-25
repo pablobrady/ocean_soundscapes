@@ -69,17 +69,6 @@ $buttonGray:      #ccd;
 $altTextColor:    $deepBlue;
 
 
-// Dimensions
-@function aspect($width) {
-  @return $width * 9 / 16; // ex. 562.5px
-}
-
-$centerContentWidth:    percentage((1000px-300px)/1000px);
-$centerContentHeight:   aspect($centerContentWidth);
-$leftNavWidth:          percentage(300px/1000px);
-$leftNavHeight:         $centerContentHeight;
-
-
 h1 {
   font-size: 1.9em;
   font-weight: bold;
@@ -102,9 +91,10 @@ body {
 
 .header { 
   height: 80px;
-  width:  305px;
+  width:  0.953125%;  // was 305px
   text-align: left;
-  padding-left: 15px;
+  padding-left: 0;
+  background-color: $lightBlue;
   position: relative;
 
   img { 
@@ -120,7 +110,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-40%, -50%);
+    transform: translate(90px, -50%);
   }
 
 }
@@ -131,43 +121,69 @@ body {
   background-color: lighten($medBlue, 10%);
 }
 
-.leftNav {
-  width: 100%;
+.locationWrapper {
+  width:100%;
   min-width: 320px;
-  height: 550px;
-  background-color: $medBlue;
 
-  .subheader {
-    width:100%;
+  .locationHeader {
+    height: 25px;
     background-color: $deepBlue;
     color:white;
     margin:auto;
     text-align:center;
     line-height:25px;
+    font-size: 1.6em;
+  }
+
+  .locationNav {
+    height: 525px;
+    background-color: $medBlue;
   }
 }
 
-.flex-container {
+.liItem {
+  height:200px;
+  border:solid 3px DeepSkyBlue;
+  position: relative;
+
+  .buttonImage {
+    position:absolute;
+    left: 0px;
+    bottom: 0px;
+  }
+
+  SPAN {
+    position: absolute;
+    width: 70.3125%;
+    height: 55px;
+    top: 121px;
+    left: 79px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1.5em;
+    vertical-align: center;
+    padding: 10px 0 10px 10px;
+
+    // Center location title text in SPAN container
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.loc-flex-container {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
-  width: 320px;
+  width: 100%;
+  min-width: 320px;
   overflow: auto;
-//  height: 550px;
+  height: 550px;
   background-color: Silver;
 }
-
-.flex-item {
-    background-color: DeepSkyBlue;
-    postion:absolute;
-    width: 320px;
-    height: 100px;
-    margin: 0px 0px;
-}
-
 
 /*.centralContent {
   width:  $centerContentWidth;
@@ -295,10 +311,11 @@ display: none; // !!!!!
 }
 
 @media screen and (min-width: 640px) { 
-  // Limit leftNav to 320px again
+  .locationWrapper { width:320px; }
 }
 
 @media screen and (min-width: 1200px) { 
+  .contentWrapper { width: 1200px; margin: auto;}
   #worldMap { display: block; }
 }
 

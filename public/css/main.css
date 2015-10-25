@@ -63,9 +63,10 @@ body {
 
 .header {
   height: 80px;
-  width: 305px;
+  width: 0.953125%;
   text-align: left;
-  padding-left: 15px;
+  padding-left: 0;
+  background-color: #bcdbeb;
   position: relative; }
   .header img {
     position: absolute;
@@ -78,43 +79,63 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-40%, -50%); }
+    transform: translate(90px, -50%); }
 
 .contentWrapper {
   width: 100%;
   height: 550px;
   background-color: #a8d1e5; }
 
-.leftNav {
+.locationWrapper {
   width: 100%;
-  min-width: 320px;
-  height: 550px;
-  background-color: #81bcd9; }
-  .leftNav .subheader {
-    width: 100%;
+  min-width: 320px; }
+  .locationWrapper .locationHeader {
+    height: 25px;
     background-color: #025177;
     color: white;
     margin: auto;
     text-align: center;
-    line-height: 25px; }
+    line-height: 25px;
+    font-size: 1.6em; }
+  .locationWrapper .locationNav {
+    height: 525px;
+    background-color: #81bcd9; }
 
-.flex-container {
+.liItem {
+  height: 200px;
+  border: solid 3px DeepSkyBlue;
+  position: relative; }
+  .liItem .buttonImage {
+    position: absolute;
+    left: 0px;
+    bottom: 0px; }
+  .liItem SPAN {
+    position: absolute;
+    width: 70.3125%;
+    height: 55px;
+    top: 121px;
+    left: 79px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1.5em;
+    vertical-align: center;
+    padding: 10px 0 10px 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+
+.loc-flex-container {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
-  width: 320px;
+  width: 100%;
+  min-width: 320px;
   overflow: auto;
+  height: 550px;
   background-color: Silver; }
-
-.flex-item {
-  background-color: DeepSkyBlue;
-  postion: absolute;
-  width: 320px;
-  height: 100px;
-  margin: 0px 0px; }
 
 /*.centralContent {
   width:  $centerContentWidth;
@@ -219,7 +240,14 @@ body {
   font-size: 0.7em;
   color: #025177; }
 
+@media screen and (min-width: 640px) {
+  .locationWrapper {
+    width: 320px; } }
 @media screen and (min-width: 1200px) {
+  .contentWrapper {
+    width: 1200px;
+    margin: auto; }
+
   #worldMap {
     display: block; } }
 

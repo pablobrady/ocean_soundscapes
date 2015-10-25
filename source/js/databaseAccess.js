@@ -4,6 +4,7 @@ var audioDatabase = [
     "audioFilename": "164767__rucisko__ocean-waves_Coimbra_Portugal.mp3", 
     "locationName": "Figueria da Foz, Portugal", 
     "locationCountry": "Portugal",
+    "thumb_image_URL": "OceanBeach-LandsEndwFogHorn_thumb.jpg",
     "rating": "5",
     "xpos": "20",
     "ypos": "63",
@@ -38,7 +39,7 @@ var audioDatabase = [
   },
   { 
     "audioFilename": "OceanBeach-LandsEndwFogHorn.mp3", 
-    "locationName": "Land\'s End, San Francisco CA, USA", 
+    "locationName": "Land's End, San Francisco CA, USA", 
     "locationCountry": "United States",
     "rating": "5",
     "xpos": "525",
