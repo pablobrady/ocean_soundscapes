@@ -114,8 +114,18 @@ $(document).ready(function (){
   // drawPinsWithSelection( 0 );
 
   //// Insert Location HTML (jQuery)
+  $(function(){
 
-  
+    console.log("GET: " + audioDatabase.length);
+
+
+
+    for(var i=0; i<audioDatabase.length; i++) {
+      insertLocationNavElement( i, "#locationInsertionPoint" );
+    }
+
+  });
+
 });
 
 

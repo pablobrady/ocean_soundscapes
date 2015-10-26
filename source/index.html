@@ -30,11 +30,12 @@
       &nbsp;&nbsp;&nbsp;<button id="rightArrowButton" class="arrowButton"> Next &rightarrow;</button>
       &nbsp;&nbsp;<button id="muteButton" class="muteButton">Mute</button>
       </div>
-      <audio id='audioPlayer' loop autoplay>
-        <source src="../audio/ocean/164767__rucisko__ocean-waves_Coimbra_Portugal.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
       -->
+
+      <!-- audio id='audioPlayer' loop autoplay>
+        <source src="audio/ocean/164767__rucisko__ocean-waves_Coimbra_Portugal.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio -->
     </div>
 
     <div class="contentWrapper group">
@@ -43,40 +44,8 @@
           PICK A LOCATION
         </div>
         <div class="locationNav loc-flex-container">
-          <ul style="width:100%;">
 
-            <li class="liItem" style="background: #666 url('images/locations/Levys-Beach_Warrnambool_Australia_thumb.jpg') no-repeat center center;background-size: cover;">
-                <image onclick="alert('click');" class="buttonImage" src="images/plb_pauseButton_80x80.png" width="80" height="80" alt=""></image>
-                <span>Levy's Beach, Warrnambool, Australia</span>
-            </li>
-
-            <li class="liItem" style="background: #666 url('images/locations/OceanBeach-LandsEndwFogHorn_thumb.jpg') no-repeat center center;background-size: cover;">
-                <image onclick="alert('click');" class="buttonImage" src="images/plb_pauseButton_80x80.png" width="80" height="80" alt=""></image>
-                <span>Land's End,<br>San Francisco CA,<br>USA</span>
-            </li>
-
-            <li style="height:100px;background-color:orange;">
-              <a href="flexbox.html">Taco Menu</a>
-            </li>
-            <li style="height:100px;background-color:green;">
-              <a href="flexbox.html">Draft List</a>
-            </li>
-            <li style="height:100px;background-color:orange;">
-              <a href="flexbox.html">Taco Menu</a>
-            </li>
-            <li style="height:100px;background-color:green;">
-              <a href="flexbox.html">Draft List</a>
-            </li>
-            <li style="height:100px;background-color:purple;border:solid 3px red;">
-              <span style="postion:absolute;right:0;botton:0">SAMPLE LOCATION #1!</span>
-            </li>
-            <li style="height:100px;background-color:orange;">
-              <a href="flexbox.html">Taco Menu</a>
-            </li>
-            <li style="height:100px;background-color:green;">
-              <a href="flexbox.html">Draft List</a>
-            </li>
-          </ul>
+          <span id="locationInsertionPoint"></span>
 
         </div>
       </div>
