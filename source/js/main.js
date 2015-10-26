@@ -1,73 +1,11 @@
 var currentSelection = 0;
-var len = audioDatabase.length;
 
 
-
-
-// MAP FUNCTIONS
-
-// var drawPinsWithSelection = function( selected ) {
-//   console.log("drawPinsWithSelection - " + selected);
-
-//   $('#leftArrowButton').removeClass("disabled");
-//   $('#rightArrowButton').removeClass("disabled");
-
-//   if(selected===0){
-//     $('#leftArrowButton').addClass("disabled");
-//   } else if(selected===audioDatabase.length-1) {
-//     $('#rightArrowButton').addClass("disabled");
-//   }
-
-
-//   $("#pinId0").animate({
-//       position: 'relative',
-//       left: audioDatabase[selected].xpos + "px",
-//       top: audioDatabase[selected].ypos + "px",
-//       opacity: '1.00'
-//     }, 1000, "swing", function() {
-//         $( "#pinId0" ).html( "<div>" + audioDatabase[selected].locationCountry + "</div>" );
-//     });
-
-//   // var pin = document.getElementById('pinId0');
-//   // pin.style.position = 'relative';
-//   // pin.style.left = "" + audioDatabase[selected].xpos + "px";
-//   // pin.style.top = "" + audioDatabase[selected].ypos + "px";
-//   // // pin.src = '../images/pin3.png';
-
-//   console.log("Selected filename: " + audioDatabase[selected].audioFilename);
-//   $('#nowPlayingMsg2').html(audioDatabase[selected].locationName);
-
-//   $('#audioPlayer').attr('src', "audio/ocean/" + audioDatabase[selected].audioFilename);
-//   $('#audioPlayer').load();
-// };
-
-// var moveLeft = function() {
-//   console.log("moveLeft! currentSelection="+currentSelection);
-//   if ( currentSelection > 0 ) {
-//     currentSelection--;
-//   }
-//   drawPinsWithSelection( currentSelection );
-// };
-
-// var moveRight = function() {
-//   if ( currentSelection < len-1 ) {
-//     currentSelection++;
-//   }
-//   drawPinsWithSelection( currentSelection );
-// };
-
-
-
-var muteToggle = function() {
-  $('#muteButton').toggleClass("mutedMode");
-  toggleMuteAudio();
+var OceanInterfaceManager = function() {
+  this.setupListeners();
 };
 
-
-
-// MAIN - ON.READY
-$(document).ready(function (){
-  jInit(); // Audio Player actions/listeners
+OceanInterfaceManager.prototype.setupListeners = function() {
 
   $('#leftArrowButton').click(function(){    
     moveLeft();
@@ -109,21 +47,102 @@ $(document).ready(function (){
     // e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
+};
 
+
+
+var audioPlayerClicked = function( index ) {
+  alert("CLICKED ON OCEAN " + index + "!");
+};
+
+
+
+
+var moveLeft = function() {
+  // console.log("moveLeft! currentSelection="+currentSelection);
+  if ( currentSelection > 0 ) {
+    currentSelection--;
+  }
+  drawPinsWithSelection( currentSelection );
+};
+
+var moveRight = function() {
+  if ( currentSelection < len-1 ) {
+    currentSelection++;
+  }
+  drawPinsWithSelection( currentSelection );
+};
+
+var muteToggle = function() {
+  $('#muteButton').toggleClass("mutedMode");
+  toggleMuteAudio();
+};
+
+
+
+
+
+// MAP FUNCTIONS
+
+// var drawPinsWithSelection = function( selected ) {
+//   console.log("drawPinsWithSelection - " + selected);
+
+//   $('#leftArrowButton').removeClass("disabled");
+//   $('#rightArrowButton').removeClass("disabled");
+
+//   if(selected===0){
+//     $('#leftArrowButton').addClass("disabled");
+//   } else if(selected===audioDatabase.length-1) {
+//     $('#rightArrowButton').addClass("disabled");
+//   }
+
+
+//   $("#pinId0").animate({
+//       position: 'relative',
+//       left: audioDatabase[selected].xpos + "px",
+//       top: audioDatabase[selected].ypos + "px",
+//       opacity: '1.00'
+//     }, 1000, "swing", function() {
+//         $( "#pinId0" ).html( "<div>" + audioDatabase[selected].locationCountry + "</div>" );
+//     });
+
+//   // var pin = document.getElementById('pinId0');
+//   // pin.style.position = 'relative';
+//   // pin.style.left = "" + audioDatabase[selected].xpos + "px";
+//   // pin.style.top = "" + audioDatabase[selected].ypos + "px";
+//   // // pin.src = '../images/pin3.png';
+
+//   console.log("Selected filename: " + audioDatabase[selected].audioFilename);
+//   $('#nowPlayingMsg2').html(audioDatabase[selected].locationName);
+
+//   $('#audioPlayer').attr('src', "audio/ocean/" + audioDatabase[selected].audioFilename);
+//   $('#audioPlayer').load();
+// };
+
+
+
+
+
+// MAIN - ON.READY
+$(document).ready(function (){
+  jInit(); // Audio Player actions/listeners
+
+  // Class Initialization (Psuedoclassical)
+  var oDatabaseMgr  = new OceanDatabaseManager();
+  var oViewMgr      = new OceanViewManager( oDatabaseMgr );
+  var oInterfaceMgr = new OceanInterfaceManager();
+  
 
   // drawPinsWithSelection( 0 );
 
   //// Insert Location HTML (jQuery)
   $(function(){
 
-    console.log("GET: " + audioDatabase.length);
+    console.log("GET: " + oDatabaseMgr.getDatabaseLength() );
+    oViewMgr.drawLocationsStack();
 
 
-
-    for(var i=0; i<audioDatabase.length; i++) {
-      insertLocationNavElement( i, "#locationInsertionPoint" );
-    }
-
+    
   });
 
 });
