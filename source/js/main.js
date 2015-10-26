@@ -1,24 +1,35 @@
 var currentSelection = 0;
 
 
-var OceanInterfaceManager = function() {
+var OceanInterfaceManager = function(oDBMgr, oViewMgr) {
+  console.log("* OceanInterfaceManager Init *");
+  if( !oDBMgr ) { 
+    console.error("ERROR - OceanInterfaceManager requires an OceanDatabaseManager() reference to initialize.  Exiting...");
+    return;
+  }
+  if( !oViewMgr ) { 
+    console.error("ERROR - OceanInterfaceManager requires an OceanViewManager() reference to initialize.  Exiting...");
+    return;
+  }
+  this.oDBMgr = oDBMgr;
+  this.oViewMgr = oViewMgr;
+
+  this.currentSelection = 0;
+  this.isPlaying = false;
+
   this.setupListeners();
 };
 
 OceanInterfaceManager.prototype.setupListeners = function() {
-
   $('#leftArrowButton').click(function(){    
     moveLeft();
   });
-
   $('#rightArrowButton').click(function(){    
     moveRight();
   });
-
   $('#muteButton').click(function(){
     muteToggle();
   });
-
   // Listen for arrow keys
   $(document).keydown(function(e) {
     switch(e.which) {
@@ -47,15 +58,35 @@ OceanInterfaceManager.prototype.setupListeners = function() {
     // e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
+  // Listen for Audio playback
+  document.getElementById('audioPlayer').addEventListener('playing',function() { 
+    console.log("this.isPlaying is TRUE");
+    this.isPlaying=true; 
+    // this.playbackHasStarted();
+  },false);
 };
+
+OceanInterfaceManager.prototype.playerClicked = function(index) {
+  console.log("Selected filename: " + this.oDBMgr.audioDatabase[index].audioFilename);
+  $('#nowPlayingMsg2').html(this.oDBMgr.audioDatabase[index].locationName);
+
+  document.getElementById('audioPlayer').setAttribute('src', this.oDBMgr.getAudioData_audioFileNameWithPath(index) );
+
+  for(var i=0; i<this.oDBMgr.audioDatabase.length; i++) {
+    document.getElementById('locAudioBut' + index).setAttribute('src', 'images/plb_pauseButton_80x80.png');
+  }
+  document.getElementById('locAudioBut' + index).setAttribute('src', 'images/plb_pauseButton_80x80.png');
+  loadAudio();
+}
+
+
 
 
 
 var audioPlayerClicked = function( index ) {
-  alert("CLICKED ON OCEAN " + index + "!");
+  console.log("CLICKED ON OCEAN " + index + "!");
+  oInterfaceMgr.playerClicked( index );
 };
-
-
 
 
 var moveLeft = function() {
@@ -112,38 +143,32 @@ var muteToggle = function() {
 //   // pin.style.top = "" + audioDatabase[selected].ypos + "px";
 //   // // pin.src = '../images/pin3.png';
 
-//   console.log("Selected filename: " + audioDatabase[selected].audioFilename);
-//   $('#nowPlayingMsg2').html(audioDatabase[selected].locationName);
-
-//   $('#audioPlayer').attr('src', "audio/ocean/" + audioDatabase[selected].audioFilename);
-//   $('#audioPlayer').load();
+//    loadAudio()
 // };
 
 
 
 
 
+var oDatabaseMgr;
+var oViewMgr;
+var oInterfaceMgr;
+
 // MAIN - ON.READY
 $(document).ready(function (){
   jInit(); // Audio Player actions/listeners
 
   // Class Initialization (Psuedoclassical)
-  var oDatabaseMgr  = new OceanDatabaseManager();
-  var oViewMgr      = new OceanViewManager( oDatabaseMgr );
-  var oInterfaceMgr = new OceanInterfaceManager();
+  oDatabaseMgr  = new OceanDatabaseManager();
+
+  oViewMgr      = new OceanViewManager( oDatabaseMgr );
+  oViewMgr.drawLocationsStack();
+
+  oInterfaceMgr = new OceanInterfaceManager( oDatabaseMgr, oViewMgr );
   
 
   // drawPinsWithSelection( 0 );
 
-  //// Insert Location HTML (jQuery)
-  $(function(){
-
-    console.log("GET: " + oDatabaseMgr.getDatabaseLength() );
-    oViewMgr.drawLocationsStack();
-
-
-    
-  });
 
 });
 

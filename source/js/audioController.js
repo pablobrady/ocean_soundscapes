@@ -1,3 +1,8 @@
+// http://demo.codesamplez.com/javascript/audio
+// http://codesamplez.com/programming/control-html5-audio-with-jquery
+
+console.log("audioController arrival.");
+
 var audio;
 function jInit(){
     audio = $("#audioPlayer");
@@ -14,10 +19,17 @@ function addEventHandlers(){
     $("a.volume-up").click(volumeUp);
     $("a.volume-down").click(volumeDown);
     $("a.mute").click(toggleMuteAudio);
+
 }
 
 function loadAudio(){
-    audio.bind("load",function(){ });
+    console.log("loadAudio");
+    audio.bind("load",function(){ 
+        var errmsg = "Sorry but there was an error: ";
+        if ( status == "error" ) {
+          alert( errmsg + xhr.status + " " + xhr.statusText );
+        }
+    });
     audio.trigger('load');
 }
 

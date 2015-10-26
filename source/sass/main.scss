@@ -137,10 +137,9 @@ body {
   .locationNav {
     height: 525px;
     background-color: $medBlue;
+    width: 100%;
 
     .liItem {
-      width: 100%;
-
       height:200px;
       border:solid 3px DeepSkyBlue;
       position: relative;
@@ -149,6 +148,13 @@ body {
         position:absolute;
         left: 0px;
         bottom: 0px;
+
+        .playButtonImage {
+          background: #0F0 url("../images/plb_playButton_80x80.png") no-repeat;
+        }
+        .pauseButtonImage {
+          background: #f00 url("../images/plb_pauseButton_80x80.png") no-repeat;
+        }
       }
 
       SPAN {

@@ -1,6 +1,8 @@
 
 
 var OceanDatabaseManager = function() {
+  console.log("* OceanDatabaseManager Init *");
+  this.AUDIOPATH = "audio\\ocean\\";
   this.audioDatabase = [
     { 
       "audioFilename": "164767__rucisko__ocean-waves_Coimbra_Portugal.mp3", 
@@ -57,9 +59,10 @@ var OceanDatabaseManager = function() {
 
 };
 
-OceanDatabaseManager.prototype.getAudioData_audioFileName = function(index)  {
-  var obj = getAudioDataObject(index);
-  return obj.audioFilename;
+OceanDatabaseManager.prototype.getAudioData_audioFileNameWithPath = function(index)  {
+  var obj = this.AUDIOPATH + this.audioDatabase[index].audioFilename; // getAudioDataObject(index);
+  console.log("INDEX = " + index + " FILE: " + obj);
+  return obj;
 };
 
 // for now, allow grabbing entire db object.
