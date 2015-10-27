@@ -146,8 +146,9 @@ body {
 
       .buttonImage {
         position:absolute;
-        left: 0px;
-        bottom: 0px;
+        left: 4px;
+        bottom: 4px;
+        border: none;
       }
 
       SPAN {
@@ -173,10 +174,10 @@ body {
 }
 
 .playButtonImage {
-  background: #0F0 url("../images/PLB_playButton_80x80.png") repeat-x left top;
+  background: url("../images/plb_playButton_75x75.png") repeat-x left top;
 }
 .pauseButtonImage {
-  background: #f00 url("../images/PLB_pauseButton_80x80.png") repeat-x left top;
+  background: url("../images/plb_pauseButton_75x75.png") repeat-x left top;
 }
 
 
@@ -292,8 +293,11 @@ display: none; // !!!!!
 }
 
 .copyright {
-  margin: auto;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  display: block;
+  vertical-align: center;
   font-size: 0.7em;
   color: $altTextColor;
 }
