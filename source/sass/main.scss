@@ -47,9 +47,8 @@ table {
   border-spacing: 0;
 }
 
-//
-// MOBILE MOBILE MOBILE //
-//
+
+
 
 /* OceanSoundscapes */
 
@@ -82,16 +81,22 @@ h2 {
 
 /* Page Elements */
 body {
-  // padding: 20px 50px 20px 50px;
   font: 62.5% "Verdana", Helvetica, Arial, sans-serif;
   color: $black;
   box-sizing: border-box;
   background-color: $lightBlue;
 }
 
+.headerWrapper {
+  width:  100%;
+}
+
 .header { 
   height: 80px;
-  width:  0.953125%;  // was 305px
+  width:  100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
   padding-left: 0;
   background-color: $lightBlue;
@@ -108,11 +113,23 @@ body {
     color: $altTextColor;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(90px, -50%);
+    padding-left: 100px;
+    transform: translate(0, -50%);
+    width: 50%; // Intentionally wraps title at about <490px
+  }
+
+  .tagline { 
+    display: none; // Not on mobile
   }
 
 }
+
+.pageDivider {
+  width: 100%;
+  height: 1px;
+  background-color: darken($medBlue, 20%);
+}
+
 
 .contentWrapper {
   width:  100%;
@@ -286,27 +303,45 @@ display: none; // !!!!!
 
 /* FOOTER */
 
-.footerDiv {
-  width: 100%;
-  height: 20px;
-  background-color: #dff;
-}
-
 .copyright {
   margin-left: auto;
   margin-right: auto;
+  padding: 5px 0 5px 0;
   width: 100px;
   display: block;
-  vertical-align: center;
-  font-size: 0.7em;
+  font-size: 0.9em;
   color: $altTextColor;
 }
 
-@media screen and (min-width: 640px) { 
-  .locationWrapper { width:320px; }
+/* Media Queries */
+
+@media screen and (min-width: 640px) {  // 640px and over...
+  .header { 
+
+    h1 {
+      top: 50%;
+      transform: translate(0, -75%);
+    }
+
+    .tagline {
+        position:absolute;
+        top:54%;
+        left: 102px;
+        display: block; // Not on mobile
+
+        color: $altTextColor; 
+        display: block; 
+        font-size:1.41em;
+      }
+
+  }
+
+  
+
+  .locationWrapper { width:320px; }     // snap back to 320px
 }
 
-@media screen and (min-width: 1200px) { 
+@media screen and (min-width: 1200px) {  // 1200px and over...
   .contentWrapper { width: 1200px; margin: auto;}
   #worldMap { display: block; }
 }
