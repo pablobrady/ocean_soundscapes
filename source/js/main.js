@@ -15,9 +15,21 @@ var OceanInterfaceManager = function(oDBMgr, oViewMgr) {
   this.oViewMgr = oViewMgr;
 
   this.currentSelection = 0;
-  this.isPlaying = false;
+  this.lastSelection = -1;
+
+  this.isFirstPlay = true;
+  this.playButtonVisibilityState = this.setupPlayButtonVisibilityState();
 
   this.setupListeners();
+};
+
+OceanInterfaceManager.prototype.setupPlayButtonVisibilityState = function() {
+  var len = this.oDBMgr.getDatabaseLength();
+  var array = [];
+  for(var i=0; i<len; i++) {
+    array.push( true ); // Play button visible
+  }
+  return array;
 };
 
 OceanInterfaceManager.prototype.setupListeners = function() {
@@ -58,33 +70,48 @@ OceanInterfaceManager.prototype.setupListeners = function() {
     // e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
-  // Listen for Audio playback
+  // Listen for Audio playback start
   document.getElementById('audioPlayer').addEventListener('playing',function() { 
     console.log("this.isPlaying is TRUE");
-    this.isPlaying=true; 
+    this.isFirstPlay=false; 
     // this.playbackHasStarted();
   },false);
 };
 
 OceanInterfaceManager.prototype.playerClicked = function(index) {
-  console.log("Selected filename: " + this.oDBMgr.audioDatabase[index].audioFilename);
-  $('#nowPlayingMsg2').html(this.oDBMgr.audioDatabase[index].locationName);
+  this.currentSelection = index;
 
-  document.getElementById('audioPlayer').setAttribute('src', this.oDBMgr.getAudioData_audioFileNameWithPath(index) );
+  $('#nowPlayingMsg2').html(this.oDBMgr.audioDatabase[this.currentSelection].locationName);
 
-  for(var i=0; i<this.oDBMgr.audioDatabase.length; i++) {
-    document.getElementById('locAudioBut' + index).setAttribute('src', 'images/plb_pauseButton_80x80.png');
+
+  // Reset all PLAY/PAUSE button images
+  for(var i=0; i<this.playButtonVisibilityState.length; i++) {
+    document.getElementById('locAudioBut' + i).setAttribute('class', 'buttonImage playButtonImage');
   }
-  document.getElementById('locAudioBut' + index).setAttribute('src', 'images/plb_pauseButton_80x80.png');
-  loadAudio();
-}
+
+  // Current click handling
+  if(this.currentSelection===this.lastSelection || this.isFirstPlay===true) {
+    this.playButtonVisibilityState[this.currentSelection] = !(this.playButtonVisibilityState[this.currentSelection]);
+  } 
+
+  // Control Audio
+  if(this.playButtonVisibilityState[this.currentSelection]) {
+    pauseAudio();
+    document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage playButtonImage');
+  } else {
+    document.getElementById('audioPlayer').setAttribute('src', this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
+    loadAudio();
+    document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage pauseButtonImage');
+  }
+
+  this.lastSelection = this.currentSelection;
+};
 
 
 
 
 
 var audioPlayerClicked = function( index ) {
-  console.log("CLICKED ON OCEAN " + index + "!");
   oInterfaceMgr.playerClicked( index );
 };
 

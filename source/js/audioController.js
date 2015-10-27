@@ -23,7 +23,6 @@ function addEventHandlers(){
 }
 
 function loadAudio(){
-    console.log("loadAudio");
     audio.bind("load",function(){ 
         var errmsg = "Sorry but there was an error: ";
         if ( status == "error" ) {

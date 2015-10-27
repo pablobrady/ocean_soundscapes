@@ -25,7 +25,7 @@ OceanViewManager.prototype.insertLocationNavElement = function( index, elementId
   var locationName  = audioDatabase[index].locationName;
   var thumbImageURL = audioDatabase[index].thumb_image_URL;
 
-  var locationHTML = '<div id="locBut' + index + '" class="liItem" style="background: #666 url( \'images/locations/' + thumbImageURL + '\' ) no-repeat center center;background-size: cover;"><image id="locAudioBut' + index + '"onclick="audioPlayerClicked(' + index + ')" class="buttonImage" src="images/plb_playButton_80x80.png" width="80" height="80" alt=""></image><span>' + locationName + '</span></div>';
+  var locationHTML = '<div id="locBut' + index + '" class="liItem" style="background: #666 url( \'images/locations/' + thumbImageURL + '\' ) no-repeat center center;background-size: cover;"><image id="locAudioBut' + index + '" onclick="audioPlayerClicked(' + index + ')" class="buttonImage playButtonImage" width="80" height="80" alt=""></image><span>' + locationName + '</span></div>';
 
   $( locationHTML ).insertAfter( elementId );
 };

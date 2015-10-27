@@ -108,10 +108,6 @@ body {
         position: absolute;
         left: 0px;
         bottom: 0px; }
-        .locationWrapper .locationNav .liItem .buttonImage .playButtonImage {
-          background: #0F0 url("../images/plb_playButton_80x80.png") no-repeat; }
-        .locationWrapper .locationNav .liItem .buttonImage .pauseButtonImage {
-          background: #f00 url("../images/plb_pauseButton_80x80.png") no-repeat; }
       .locationWrapper .locationNav .liItem SPAN {
         position: absolute;
         width: 70.3125%;
@@ -127,6 +123,12 @@ body {
         display: flex;
         justify-content: center;
         flex-direction: column; }
+
+.playButtonImage {
+  background: #0F0 url("../images/PLB_playButton_80x80.png") repeat-x left top; }
+
+.pauseButtonImage {
+  background: #f00 url("../images/PLB_pauseButton_80x80.png") repeat-x left top; }
 
 .loc-flex-container {
   width: 100%;

@@ -98,7 +98,6 @@ OceanDatabaseManager.prototype.getAudioData_ypos = function(index)  {
 };
 
 OceanDatabaseManager.prototype.getDatabaseLength = function() {
-  console.log("OceanDatabaseManager.prototype.getDatabaseLength arrival.");
   return this.audioDatabase.length;
 };
 

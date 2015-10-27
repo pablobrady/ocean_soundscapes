@@ -148,13 +148,6 @@ body {
         position:absolute;
         left: 0px;
         bottom: 0px;
-
-        .playButtonImage {
-          background: #0F0 url("../images/plb_playButton_80x80.png") no-repeat;
-        }
-        .pauseButtonImage {
-          background: #f00 url("../images/plb_pauseButton_80x80.png") no-repeat;
-        }
       }
 
       SPAN {
@@ -176,8 +169,14 @@ body {
         flex-direction: column;
       }
     }
-
   }
+}
+
+.playButtonImage {
+  background: #0F0 url("../images/PLB_playButton_80x80.png") repeat-x left top;
+}
+.pauseButtonImage {
+  background: #f00 url("../images/PLB_pauseButton_80x80.png") repeat-x left top;
 }
 
 
