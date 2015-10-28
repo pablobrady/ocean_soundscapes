@@ -13,6 +13,8 @@ Distraction-free Background Audio
 
 ##### Coming soon...
 
+* iOS Safari "pause" button fix
+* Netscape compatibility fix
 * Mocha / Chai Testing
 * Next/Prev/Mute buttons (in header)
 * (Anim) Zoom-in to large location image.
