@@ -32,10 +32,12 @@ function loadAudio(){
           alert( errmsg + xhr.status + " " + xhr.statusText );
         }
     });
+    unmuteAudio();
     audio.trigger('load');
 }
 
 function startAudio(){
+    unmuteAudio();
     audio.trigger('play');
 }
 
