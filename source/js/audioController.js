@@ -1,10 +1,5 @@
-'use strict;'
-
 // http://demo.codesamplez.com/javascript/audio
 // http://codesamplez.com/programming/control-html5-audio-with-jquery
-
-console.log("audioController arrival.");
-
 var audio;
 var lastVolumeLevel = 0.75;
 function jInit(){
