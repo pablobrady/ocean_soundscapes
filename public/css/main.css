@@ -156,23 +156,10 @@ body {
   position: relative;
   top: 0;
   left: 0;
-  /*  width:  400px;
-    height: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    float:left;
-  */
-  background-color: orange; }
+  background-color: #f96f00; }
 
 .nowPlaying {
-  width: 100%;
-  height: 50px;
-  position: relative;
-  display: none;
-  /*  margin-left: auto;
-    margin-right: auto;*/
-  text-align: center;
-  font-size: 1.9em; }
+  display: none; }
 
 #nowPlayingMsg2 {
   font-weight: bold;
@@ -265,18 +252,36 @@ body {
     display: block;
     font-size: 1.41em; }
 
+  .contentWrapper {
+    width: 100%;
+    height: 550px;
+    background-color: #a8d1e5; }
+
   .locationWrapper {
     width: 320px; }
 
+  .centralContent {
+    position: relative;
+    background-color: initial; }
+
   .nowPlaying {
-    display: block; } }
+    width: 300px;
+    padding: 10px;
+    height: 150px;
+    display: block;
+    font-size: 1.9em; } }
 @media screen and (min-width: 1146px) {
   .contentWrapper {
     width: 1146px;
     margin: auto; }
 
   .nowPlaying {
-    display: block; }
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    display: block;
+    text-align: center;
+    font-size: 1.9em; }
 
   .worldMap {
     display: block; } }

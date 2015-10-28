@@ -60,6 +60,7 @@ $bodyColor:  lighten( $medBlue, 90% );
 
 $boldRed:         #aa0033;
 $seafoam:         #23a4b1;
+$deepOrange:      #f96f00;
 $medGray:         #666;
 $black:           #111;
 $pureBlack:       #000;
@@ -221,25 +222,12 @@ body {
   position: relative;
   top: 0;
   left: 0;
-/*  width:  400px;
-  height: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  float:left;
-*/
-  background-color: orange;
+  background-color: $deepOrange;
 }
 
 
 .nowPlaying {
-  width: 100%;
-  height: 50px;
-  position: relative;
   display: none;  // Not visible on mobile
-/*  margin-left: auto;
-  margin-right: auto;*/
-  text-align: center;
-  font-size: 1.9em;
 }
 
 #nowPlayingMsg2 {
@@ -368,11 +356,28 @@ body {
 
   }
 
+  .contentWrapper {
+    // mobile defaults.
+    width:  100%;
+    height: 550px;
+    background-color: lighten($medBlue, 10%);
+  }
+
   .locationWrapper { width:320px; }     // snap back to 320px
 
-  .nowPlaying { 
-    display: block;
+  .centralContent {
+    position: relative;
+    background-color: initial;
   }
+
+  .nowPlaying {
+    width: 300px;  // 320px x 150px
+    padding: 10px;
+    height: 150px;
+    display: block;
+    font-size: 1.9em;
+  }
+
 }
 
 @media screen and (min-width: $maxContentWrapperWidth) {  // 11XXpx and over...
@@ -380,6 +385,15 @@ body {
     width: $maxContentWrapperWidth; 
     margin: auto;
   }
-  .nowPlaying { display: block; }
+  
+  .nowPlaying {
+    width: 100%;
+    height: 50px;
+        padding: 0;
+    display: block;
+    text-align: center;
+    font-size: 1.9em;
+  }
+
   .worldMap { display: block; }
 }
