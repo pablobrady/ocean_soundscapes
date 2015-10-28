@@ -10,8 +10,8 @@ var OceanDatabaseManager = function() {
       "locationCountry": "Portugal",
       "thumb_image_URL": "Coimbra_Portugal_thumb.jpg",
       "rating": "5",
-      "xpos": "20",
-      "ypos": "63",
+      "xpos": "32",
+      "ypos": "164",
       "volumeAdj": 0
     },
     { 
@@ -20,8 +20,8 @@ var OceanDatabaseManager = function() {
       "locationCountry": "Indonesia",
       "thumb_image_URL": "20140316-064528-Indonedia-SeaOfJava_thumb.jpg",
       "rating": "4",
-      "xpos": "252",
-      "ypos": "162",
+      "xpos": "267",
+      "ypos": "264",
       "volumeAdj": 0
     },
     { 
@@ -30,8 +30,8 @@ var OceanDatabaseManager = function() {
       "locationCountry": "Australia",
       "thumb_image_URL": "Levys-Beach_Warrnambool_Australia_thumb.jpg",
       "rating": "5",
-      "xpos": "338",
-      "ypos": "269",
+      "xpos": "356",
+      "ypos": "372",
       "volumeAdj": 0
     },
     { 
@@ -40,8 +40,8 @@ var OceanDatabaseManager = function() {
       "locationCountry": "French Polynesia",
       "thumb_image_URL": "fakarava_island_french_polynesia_thumb.jpg",
       "rating": "4",
-      "xpos": "420",
-      "ypos": "151",
+      "xpos": "438",
+      "ypos": "259",
       "volumeAdj": 0
     },
     { 
@@ -50,8 +50,8 @@ var OceanDatabaseManager = function() {
       "locationCountry": "United States",
       "thumb_image_URL": "OceanBeach-LandsEndwFogHorn_thumb.jpg",
       "rating": "5",
-      "xpos": "525",
-      "ypos": "57",
+      "xpos": "543",
+      "ypos": "160",
       "volumeAdj": 0
     }
   ];

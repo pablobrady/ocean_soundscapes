@@ -177,6 +177,9 @@ body {
   background-position: center center;
   border: solid 3px #666; }
 
+#pinId0 {
+  position: absolute; }
+
 .playButtonImage {
   background: url("../images/plb_playButton_75x75.png") repeat-x left top; }
 
