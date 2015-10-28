@@ -14,6 +14,7 @@ Distraction-free Background Audio
 ##### Coming soon...
 
 * Mocha / Chai Testing
+* Next/Prev/Mute buttons (in header)
 * (Anim) Zoom-in to large location image.
 
 ##### Live Demo
