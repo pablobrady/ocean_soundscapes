@@ -275,6 +275,9 @@ body {
     width: 1146px;
     margin: auto; }
 
+  .centralContent {
+    background-color: #f96f00; }
+
   .nowPlaying {
     width: 100%;
     height: 50px;
