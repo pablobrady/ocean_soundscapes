@@ -1,4 +1,4 @@
-
+'use strict;'
 
 var OceanDatabaseManager = function() {
   console.log("* OceanDatabaseManager Init *");

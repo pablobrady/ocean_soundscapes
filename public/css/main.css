@@ -67,7 +67,7 @@ body {
 .header {
   height: 80px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1146px;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -119,8 +119,7 @@ body {
       font-size: 1.6em; }
     .contentWrapper .locationWrapper .locationNav {
       height: 525px;
-      background-color: #81bcd9;
-      width: 100%; }
+      background-color: #81bcd9; }
       .contentWrapper .locationWrapper .locationNav .liItem {
         height: 200px;
         border: solid 3px DeepSkyBlue;
@@ -146,6 +145,12 @@ body {
           justify-content: center;
           flex-direction: column; }
 
+.liItemBorderBlue {
+  border: solid 3px DeepSkyBlue; }
+
+.liItemBorderRed {
+  border: solid 3px #aa0033; }
+
 .centralContent {
   float: left;
   position: relative;
@@ -163,9 +168,9 @@ body {
   width: 100%;
   height: 50px;
   position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: none;
+  /*  margin-left: auto;
+    margin-right: auto;*/
   text-align: center;
   font-size: 1.9em; }
 
@@ -176,7 +181,8 @@ body {
 .worldMap {
   width: 800px;
   height: 460px;
-  display: block;
+  display: none;
+  margin: 19px 10px 19px 10px;
   background-image: url("../images/worldMapBlue_800x460.jpg");
   background-size: 100%;
   background-color: #669;
@@ -260,13 +266,19 @@ body {
     font-size: 1.41em; }
 
   .locationWrapper {
-    width: 320px; } }
-@media screen and (min-width: 1200px) {
+    width: 320px; }
+
+  .nowPlaying {
+    display: block; } }
+@media screen and (min-width: 1146px) {
   .contentWrapper {
-    width: 1200px;
+    width: 1146px;
     margin: auto; }
 
-  #worldMap {
+  .nowPlaying {
+    display: block; }
+
+  .worldMap {
     display: block; } }
 
 /*# sourceMappingURL=main.css.map */

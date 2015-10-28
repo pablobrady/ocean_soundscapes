@@ -1,9 +1,12 @@
+'use strict;'
+
 // http://demo.codesamplez.com/javascript/audio
 // http://codesamplez.com/programming/control-html5-audio-with-jquery
 
 console.log("audioController arrival.");
 
 var audio;
+var lastVolumeLevel = 0.75;
 function jInit(){
     audio = $("#audioPlayer");
     addEventHandlers();
@@ -78,3 +81,15 @@ function volumeDown(){
 function toggleMuteAudio(){
     audio.prop("muted",!audio.prop("muted"));
 }
+
+
+function muteAudio(){
+    lastVolumeLevel = audio.prop("volume");
+    audio.prop("volume",0);
+}
+
+function unmuteAudio(){
+    audio.prop("volume",lastVolumeLevel);
+}
+
+

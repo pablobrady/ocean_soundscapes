@@ -49,9 +49,10 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
   document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage playButtonImage');
 
 
-  // Reset all PLAY/PAUSE button images
+  // Reset all PLAY/PAUSE button images / borders
   for(var i=0; i<this.playButtonVisibilityState.length; i++) {
     document.getElementById('locAudioBut' + i).setAttribute('class', 'buttonImage playButtonImage');
+    document.getElementById('locBut' + i).setAttribute('class', 'liItem liItemBorderBlue');
   }
 
   // Current click handling
@@ -59,19 +60,24 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
     this.playButtonVisibilityState[this.currentSelection] = !(this.playButtonVisibilityState[this.currentSelection]);
   }
 
-  // Control Audio
+  // Control Audio / Page Elements
   if(this.playButtonVisibilityState[this.currentSelection]) {
     document.getElementById('nowPlayingMsg1').innerHTML = "Select a location on the left.";
     document.getElementById('nowPlayingMsg2').innerHTML = "&nbsp;";
-    this.pauseAudioCallback();
+    this.mutedAudioCallback();
     document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage playButtonImage');
+    document.getElementById('locBut' + this.currentSelection).setAttribute('class', 'liItem liItemBorderBlue');
   } else {
     document.getElementById('audioPlayer').setAttribute('src', this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
     document.getElementById('nowPlayingMsg1').innerHTML = "Now playing ocean sounds from...";
     document.getElementById('nowPlayingMsg2').innerHTML = this.oDBMgr.audioDatabase[this.currentSelection].locationName;
+    this.unmutedAudioCallback();
     this.loadAudioCallback();
     document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage pauseButtonImage');
+    document.getElementById('locBut' + this.currentSelection).setAttribute('class', 'liItem liItemBorderRed');
   }
+
+  this.drawPinsWithSelection( this.currentSelection );
 
   this.lastSelection = this.currentSelection;
 };
@@ -85,7 +91,6 @@ OceanInterfaceManager.prototype.mapMoveLeft = function() {
     this.currentSelection--;
   }
   this.playerClicked(this.currentSelection);
-  this.drawPinsWithSelection( this.currentSelection );
 }
 
 OceanInterfaceManager.prototype.mapMoveRight = function() {
@@ -94,7 +99,6 @@ OceanInterfaceManager.prototype.mapMoveRight = function() {
     this.currentSelection++;
   }
   this.playerClicked(this.currentSelection);
-  this.drawPinsWithSelection( this.currentSelection );
 };
 
 OceanInterfaceManager.prototype.muteToggle = function() {
@@ -126,7 +130,6 @@ OceanInterfaceManager.prototype.drawPinsWithSelection = function( selected ) {
         $( "#pinId0" ).html( "<div>" + function() { this.oDBMgr.getAudioData_locationName(selected) } + "</div>" );
     });
 
-   this.loadAudioCallback();
 };
 
 // Plugin Audio Manager Interface
@@ -134,12 +137,12 @@ OceanInterfaceManager.prototype.setLoadAudioCallback = function( cb ) {
   this.loadAudioCallback = cb;
 };
 
-OceanInterfaceManager.prototype.setToggleAudioCallback = function( cb ) {
-  this.toggleAudioCallback = cb;
+OceanInterfaceManager.prototype.setUnmutedAudioCallback = function( cb ) {
+  this.unmutedAudioCallback = cb;
 };
 
-OceanInterfaceManager.prototype.setPauseAudioCallback = function( cb ) {
-  this.pauseAudioCallback = cb;
+OceanInterfaceManager.prototype.setMutedAudioCallback = function( cb ) {
+  this.mutedAudioCallback = cb;
 };
 
 // ------ //
@@ -158,10 +161,10 @@ var audioPlayerClicked = function( index ) {
 // ------ //
 
 var jQueryListenersSetup = function() {
-  $('#leftArrowButton').click(function(){    
+  $('#leftArrowButton').click(function(){
     oInterfaceMgr.mapMoveLeft();
   });
-  $('#rightArrowButton').click(function(){    
+  $('#rightArrowButton').click(function(){
     oInterfaceMgr.mapMoveRight();
   });
   $('#muteButton').click(function(){
@@ -216,8 +219,8 @@ $(document).ready(function (){
 
   // Plug-in the audio control callback methods (from audioController.js)
   oInterfaceMgr.setLoadAudioCallback( loadAudio );
-  oInterfaceMgr.setPauseAudioCallback( pauseAudio );
-  oInterfaceMgr.setToggleAudioCallback( toggleMuteAudio );
+  oInterfaceMgr.setUnmutedAudioCallback( unmuteAudio );
+  oInterfaceMgr.setMutedAudioCallback( muteAudio );
 
 });
 

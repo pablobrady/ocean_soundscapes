@@ -59,6 +59,7 @@ $deepBlue:   #025177;
 $bodyColor:  lighten( $medBlue, 90% );
 
 $boldRed:         #aa0033;
+$seafoam:         #23a4b1;
 $medGray:         #666;
 $black:           #111;
 $pureBlack:       #000;
@@ -69,7 +70,7 @@ $altTextColor:    $deepBlue;
 
 
 // Constant Vars
-$maxContentWrapperWidth: 1200px;
+$maxContentWrapperWidth: 320px + 800px + 6px + 20px; // aka. 1146px
 
 
 h1 {
@@ -167,7 +168,6 @@ body {
     .locationNav {
       height: 525px;
       background-color: $medBlue;
-      width: 100%;
 
       .liItem {
         height:200px;
@@ -204,6 +204,14 @@ body {
   }
 }
 
+.liItemBorderBlue {
+  border:solid 3px DeepSkyBlue;
+}
+
+.liItemBorderRed {
+  border:solid 3px $boldRed;
+}
+
 
 
 // CONTENT AREA - NOW PLAYING
@@ -219,7 +227,7 @@ body {
   margin-right: auto;
   float:left;
 */
-background-color: orange;
+  background-color: orange;
 }
 
 
@@ -227,9 +235,9 @@ background-color: orange;
   width: 100%;
   height: 50px;
   position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: none;  // Not visible on mobile
+/*  margin-left: auto;
+  margin-right: auto;*/
   text-align: center;
   font-size: 1.9em;
 }
@@ -242,7 +250,9 @@ background-color: orange;
 .worldMap {
   width:  800px;
   height: 460px;
-  display: block;
+  display: none; // not visible on smaller screens
+
+  margin: 19px 10px 19px 10px;
 
   background-image: url('../images/worldMapBlue_800x460.jpg');
   background-size: 100%;
@@ -358,16 +368,18 @@ background-color: orange;
 
   }
 
-  
-
   .locationWrapper { width:320px; }     // snap back to 320px
+
+  .nowPlaying { 
+    display: block;
+  }
 }
 
-@media screen and (min-width: $maxContentWrapperWidth) {  // 1200px and over...
-  .contentWrapper { width: $maxContentWrapperWidth; margin: auto;}
-  #worldMap { display: block; }
+@media screen and (min-width: $maxContentWrapperWidth) {  // 11XXpx and over...
+  .contentWrapper { 
+    width: $maxContentWrapperWidth; 
+    margin: auto;
+  }
+  .nowPlaying { display: block; }
+  .worldMap { display: block; }
 }
-
-
-
-
