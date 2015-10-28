@@ -68,6 +68,10 @@ $buttonGray:      #ccd;
 $altTextColor:    $deepBlue;
 
 
+// Constant Vars
+$maxContentWrapperWidth: 1200px;
+
+
 h1 {
   font-size: 1.9em;
   font-weight: bold;
@@ -94,7 +98,7 @@ body {
 .header { 
   height: 80px;
   width:  100%;
-  max-width: 1200px;
+  max-width: $maxContentWrapperWidth;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -131,64 +135,126 @@ body {
 }
 
 
+.loc-flex-container {
+  width: 100%;
+  min-width: 320px;
+  overflow: scroll;
+  height: 550px;
+  background-color: Silver;
+}
+
+
 .contentWrapper {
   width:  100%;
   height: 550px;
   background-color: lighten($medBlue, 10%);
-}
 
-.locationWrapper {
-  width:100%;
-  min-width: 320px;
+  .locationWrapper {
+    min-width: 320px;
+    height: 550px;
+    float:left;
 
-  .locationHeader {
-    height: 25px;
-    background-color: $deepBlue;
-    color:white;
-    margin:auto;
-    text-align:center;
-    line-height:25px;
-    font-size: 1.6em;
-  }
+    .locationHeader {
+      height: 25px;
+      background-color: $deepBlue;
+      color:white;
+      margin:auto;
+      text-align:center;
+      line-height:25px;
+      font-size: 1.6em;
+    }
 
-  .locationNav {
-    height: 525px;
-    background-color: $medBlue;
-    width: 100%;
+    .locationNav {
+      height: 525px;
+      background-color: $medBlue;
+      width: 100%;
 
-    .liItem {
-      height:200px;
-      border:solid 3px DeepSkyBlue;
-      position: relative;
+      .liItem {
+        height:200px;
+        border:solid 3px DeepSkyBlue;
+        position: relative;
 
-      .buttonImage {
-        position:absolute;
-        left: 4px;
-        bottom: 4px;
-        border: none;
-      }
+        .buttonImage {
+          position:absolute;
+          left: 4px;
+          bottom: 4px;
+          border: none;
+        }
 
-      SPAN {
-        position: absolute;
-        width: 70.3125%;
-        height: 55px;
-        top: 121px;
-        left: 79px;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.5);
-        font-size: 1.5em;
-        vertical-align: center;
-        padding: 10px 0 10px 10px;
-        overflow: auto;
+        SPAN {
+          position: absolute;
+          width: 70.3125%;
+          height: 55px;
+          top: 121px;
+          left: 79px;
+          color: white;
+          background-color: rgba(0, 0, 0, 0.5);
+          font-size: 1.5em;
+          vertical-align: center;
+          padding: 10px 0 10px 10px;
+          overflow: scroll;
 
-        // Center location title text in SPAN container
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
+          // Center location title text in SPAN container
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+        }
       }
     }
   }
 }
+
+
+
+// CONTENT AREA - NOW PLAYING
+
+.centralContent {
+  float: left;
+  position: relative;
+  top: 0;
+  left: 0;
+/*  width:  400px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  float:left;
+*/
+background-color: orange;
+}
+
+
+.nowPlaying {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.9em;
+}
+
+#nowPlayingMsg2 {
+  font-weight: bold;
+  color: $boldRed;
+}
+
+.worldMap {
+  width:  800px;
+  height: 460px;
+  display: block;
+
+  background-image: url('../images/worldMapBlue_800x460.jpg');
+  background-size: 100%;
+  background-color: #669;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  border: solid 3px $medGray;
+}
+
+
+
 
 .playButtonImage {
   background: url("../images/plb_playButton_75x75.png") repeat-x left top;
@@ -197,23 +263,6 @@ body {
   background: url("../images/plb_pauseButton_75x75.png") repeat-x left top;
 }
 
-
-.loc-flex-container {
-  
-  width: 100%;
-  min-width: 320px;
-  overflow: scroll;
-  height: 550px;
-  background-color: Silver;
-}
-
-/*.centralContent {
-  width:  $centerContentWidth;
-  height: 550px;
-  margin: auto;
-  padding: 30px 0 30px 0;
-  float:left;
-}*/
 
 
 /* Clear-less */
@@ -236,34 +285,11 @@ body {
   height: 30px;
 }
 
-.nowPlaying {
-  width: 800px;
-  height: 30px;  
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-size: 20px
-}
 
 
-#worldMap {
-  width:  800px;
-  height: 400px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 
-  background-image: url('../images/worldMapBlue_800x460.jpg');
-  background-size: 100%;
-  background-color: #669;
-  background-repeat: no-repeat;
-  background-position: center center;
 
-  border: solid 3px $medGray;
 
-display: none; // !!!!!
-}
 
 
 .arrowButton {
@@ -295,10 +321,6 @@ display: none; // !!!!!
   }
 }
 
-#nowPlayingMsg2 {
-  font-weight: bold;
-  color: $boldRed;
-}
 
 
 /* FOOTER */
@@ -341,8 +363,8 @@ display: none; // !!!!!
   .locationWrapper { width:320px; }     // snap back to 320px
 }
 
-@media screen and (min-width: 1200px) {  // 1200px and over...
-  .contentWrapper { width: 1200px; margin: auto;}
+@media screen and (min-width: $maxContentWrapperWidth) {  // 1200px and over...
+  .contentWrapper { width: $maxContentWrapperWidth; margin: auto;}
   #worldMap { display: block; }
 }
 
