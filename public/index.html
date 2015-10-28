@@ -1,12 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ocean Soundscapes</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"><!-- for fonts -->
 
     <link rel="stylesheet" href="css/main.css">
 
@@ -21,32 +19,57 @@
     
   </head>
   <body>
-    <h1>Ocean Soundscapes</h1>
-    <span class='tagline'>Distraction-free Background Audio</span>
+  <div class="headerWrapper">
+    <div class="header">
+      <img src="images/oceanSoundscape-icon-64x64.png" alt="Ocean Soundscapes">
+      <h1>Ocean Soundscapes</h1>
+      <div class="tagline">Distraction-free Background Audio</div>
 
-    <div>
+
+      <!-- 
       <button id="leftArrowButton" class="arrowButton disabled">&leftarrow; Previous</button>
       &nbsp;&nbsp;&nbsp;<button id="rightArrowButton" class="arrowButton"> Next &rightarrow;</button>
       &nbsp;&nbsp;<button id="muteButton" class="muteButton">Mute</button>
       </div>
-      <audio id='audioPlayer' loop autoplay>
-        <source src="../audio/ocean/164767__rucisko__ocean-waves_Coimbra_Portugal.mp3" type="audio/mpeg">
+      -->
+
+      <audio id='audioPlayer' preload="none" loop autoplay>
+        <source src="" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
+  </div>
 
-    <div class="centralContent">
-      <span id="nowPlayingMsg1" class="nowPlaying">Now playing ocean sounds from...</span>
-      <span id="nowPlayingMsg2" class="nowPlaying"></span>
-      <div id="worldMap">
-        <img id="pinId0" class="pin" src="images/pin3.png" style="position:relative;top:63px;left:20px;opacity:0">
+    <div class="pageDivider"></div>
+
+    <div class="contentWrapper group">
+      <div class="locationWrapper loc-flex-container">
+        <div class="locationHeader">
+          PICK A LOCATION
+        </div>
+        <div class="locationNav loc-flex-container">
+
+          <span id="locationInsertionPoint"></span>
+
+        </div>
       </div>
-      <div class="copyright">&copy; Paul Brady 2015</div>
+      <div class="centralContent">
+        <div class="nowPlaying">
+          <div id="nowPlayingMsg1">Select a location on the left.</div>
+          <div id="nowPlayingMsg2">&nbsp;</div>
+          <div class="worldMap">
+            <img id="pinId0" class="pin" src="images/pin3.png" style="position:absolute;top:230px;left:400px;opacity:0">
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="pageDivider"></div>
+  <div class="copyright">
+  Created and maintained by <a href="pbrady.net">Paul Brady</a>.  Source code and examples released under the MIT license. Website and documentation licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.  Some images used without permission (thx Google!).
+  </div>
 
-    <script src="js/OceanSounds_all.min.js"></script>
-
-
+<script defer src="js/OceanSounds_all.min.js"></script>
 <script defer>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

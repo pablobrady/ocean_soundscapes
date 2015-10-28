@@ -1,24 +1,23 @@
 # Ocean Soundscapes
-Distraction-free Audio
+Distraction-free Background Audio
 
 
 
-##### Tech Stack (aka. '*back to the basics*'):
+##### Tech Stack
 
+* HTML5 / CSS3 / Scss
 * Javascript
 * jQuery
 * HTML5 Audio
+* NodeJS
 
+##### Coming soon...
 
-#####*Coming soon:*
-- Faster page startup / audio downloads
-- (Vast) Interface improvements
-
-
+* Mocha / Chai Testing
+* Next/Prev/Mute buttons (in header)
+* (Anim) Zoom-in to large location image.
 
 ##### Live Demo
-
-Can't wait?  Me neither! Try this...<br>
 [http://www.oceansoundscapes.com](http://www.oceansoundscapes.com)
 
 

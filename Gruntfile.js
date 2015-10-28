@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src:  ['source/js/audioController.js', 'source/js/databaseAccess.js', 'source/js/main.js'],
+        src:  ['source/js/audioController.js', 'source/js/OceanViewManager.js', 'source/js/databaseAccess.js', 'source/js/main.js'],
         dest: 'public/js/<%= pkg.name %>_all.min.js'
       }
     },
@@ -98,9 +98,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
-
-  // grunt.registerTask('default',['jshint','uglify','concat','htmlmin','sass']);
-  // grunt.registerTask('dev',['jshint','uglify','concat','htmlmin','watch']);
 
   grunt.registerTask('build', function(arg) {
     arg = arg || 'dev';
