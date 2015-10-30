@@ -89,8 +89,20 @@ module.exports = function(grunt) {
     //   }
     // },
 
+
+    mocha: {
+      all: {
+        src: ['tests/testrunner.html'],
+      },
+      options: {
+        run: true
+      }
+    }
+
+
   });
 
+  // Load grunt mocha task
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -98,6 +110,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-mocha');
+
 
   grunt.registerTask('build', function(arg) {
     arg = arg || 'dev';
@@ -112,4 +126,10 @@ module.exports = function(grunt) {
     }
   });
 
+
+  grunt.registerTask('default', ['mocha']);
+
+
 };
+
+

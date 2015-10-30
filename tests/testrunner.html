@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+  <link rel="stylesheet" href="css/test.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/chai/chai.js"></script -->
+
+  <div class="testDiv">
+    <H3>Test Elements</H3>
+
+    <div class="testAudioDiv">
+      <audio id='audioPlayerId' preload="none" loop controls style="width: 100%;">
+        <source id="mp3Source" type="audio/mpeg">
+        <source id="oggSource" type="audio/ogg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+  </div>
+
+  <script src="../source/js/PLBAudioController.js"></script>
+  <script src="../source/js/OceanInterfaceManager.js"></script>
+  <script src="../source/js/OceanLocationElementCreator.js"></script>
+  <script src="../source/js/OceanDatabaseManager.js"></script>
+
+  <script>
+    mocha.setup('bdd')
+    mocha.reporter('html');
+  </script>
+
+  <!-- Tests -->
+  <script src="js/PLBAudioController_test.js"></script>
+  <script src="js/OceanDatabaseManager_test.js"></script>
+  <!-- script src="js/OceanInterfaceManager_test.js"></script -->
+  <!-- script src="js/OceanLocationElementCreator_test.js"></script -->
+  <!-- script src="js/main_test.js"></script -->
+
+  <script>
+    mocha.run();
+  </script>
+
+</body>
+</html>

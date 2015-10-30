@@ -1,0 +1,17 @@
+
+.testDiv { 
+  background-color:#ddd;
+  padding:10px 5% 10px 5%;
+  height:100px; 
+}
+
+.testAudioDiv {
+  width: 200px; 
+  background-color:green;
+  float:left;
+}
+
+.testLocationsDiv {
+  width: 320px; 
+  float:left;
+}

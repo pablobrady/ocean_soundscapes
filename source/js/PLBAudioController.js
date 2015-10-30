@@ -14,10 +14,8 @@
 
 
 var PLBAudioController = function( playerId ) {
-  console.log("PLBAudioController:  playerId = " + playerId);
   this.playerId = playerId;
   this.audioPlayerElement = document.getElementById( playerId );
-console.log("1) this.audioPlayerElement = ", this.audioPlayerElement);
 };
 
 PLBAudioController.prototype.loadThenPlay = function( anMP3AudioURL ) {
@@ -29,24 +27,17 @@ PLBAudioController.prototype.loadThenPlay = function( anMP3AudioURL ) {
   this.audioPlayerElement.load();
   this.audioPlayerElement.play();
 
+  return true;
 };
 
 PLBAudioController.prototype.pause = function() {
   this.audioPlayerElement.pause();
+
+  return true;
 };
 
 PLBAudioController.prototype.play = function() {
   this.audioPlayerElement.play();
+
+  return true;
 };
-
-
-
-// TESTS
-
-//if(this.audioPlayerElement) { alert("this.audioPlayerElement created."); }
-
-// console.log("PLBAudioController(): anOGGAudioURL: " + anOGGAudioURL);
-// console.log("PLBAudioController(): anMP3AudioURL: " + anMP3AudioURL);
-
-// console.log("PLBAudioController(): doc mp3Source: " + document.getElementById('mp3Source').src);
-// console.log("PLBAudioController(): doc anMP3AudioURL: " + document.getElementById('oggSource').src);
