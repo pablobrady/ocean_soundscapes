@@ -1,4 +1,6 @@
+
 var oDatabaseMgr;
+var oAudioController;
 var oLocationElementCreator;
 var oInterfaceMgr;
 
@@ -9,7 +11,7 @@ var audioPlayerClicked = function( index ) {
 };
 
 
-// var jQueryListenersSetup = function() {
+// var listenersSetup = function() {
 //   $('#leftArrowButton').click(function(){
 //     oInterfaceMgr.mapMoveLeft();
 //   });
@@ -55,28 +57,18 @@ var audioPlayerClicked = function( index ) {
 
 // MAIN - ON.READY
 $(document).ready(function (){
-  // Initialization
-  jInit(); // Init the Audio Player actions/listeners (in audioController.js - external library)
-  // jQueryListenersSetup(); // Future feature
-
-
   // Class Initialization (Psuedoclassical)
   oDatabaseMgr  = new OceanDatabaseManager();
 
-
-  // Draw any complex elements
+  // Draw page components
   oLocationElementCreator = new OceanLocationElementCreator( oDatabaseMgr );
-  oLocationElementCreator.drawLocationsStack(); // Draw the available locations on the left column (desktop)
+  oLocationElementCreator.drawLocationsStack(); // Draw the available oceans (on the left column)
 
+  // Init a simple HTML5 Audio Controller (iOS/Netscape compatible)
+  oAudioController = new PLBAudioController('audioPlayerId');
 
   // Handle user input (clicks & arrow key presses)
-  oInterfaceMgr = new OceanInterfaceManager( oDatabaseMgr, oLocationElementCreator );
-
-  // Plug-in the audio control callback methods (from audioController.js)
-  oInterfaceMgr.setLoadAudioCallback( loadAudio );
-  oInterfaceMgr.setUnmutedAudioCallback( unmuteAudio );
-  oInterfaceMgr.setMutedAudioCallback( muteAudio );
-
+  oInterfaceMgr = new OceanInterfaceManager( oDatabaseMgr, oAudioController, oLocationElementCreator );
 });
 
 

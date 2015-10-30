@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src:  ['source/js/audioController.js', 'source/OceanInterfaceManager.js', 'source/js/OceanLocationElementCreator.js', 'source/js/OceanDatabaseManager.js', 'source/js/main.js'],
+        src:  ['source/js/PLBAudioController.js', 'source/js/OceanInterfaceManager.js', 'source/js/OceanLocationElementCreator.js', 'source/js/OceanDatabaseManager.js', 'source/js/main.js'],
         dest: 'public/js/<%= pkg.name %>_all.min.js'
       }
     },

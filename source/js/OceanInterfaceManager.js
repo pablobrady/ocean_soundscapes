@@ -1,24 +1,27 @@
 
-var OceanInterfaceManager = function(oDBMgr, oViewMgr) {
+var OceanInterfaceManager = function(oDBMgr, oAudioController, oViewMgr) {
   console.log("* OceanInterfaceManager Init *");
   if( !oDBMgr ) { 
-    console.error("ERROR - OceanInterfaceManager requires an OceanDatabaseManager() reference to initialize.  Exiting...");
+    console.error("ERROR - OceanInterfaceManager requires an OceanDatabaseManager class reference to initialize.  Exiting...");
     return;
   }
+  if( !oAudioController ) { 
+    console.error("ERROR - OceanInterfaceManager requires aAudioPlayer class (maybe PLBAudioController?) to initialize.  Exiting...");
+    return;
+  }  
   if( !oViewMgr ) { 
-    console.error("ERROR - OceanInterfaceManager requires an OceanViewManager() reference to initialize.  Exiting...");
+    console.error("ERROR - OceanInterfaceManager requires an OceanViewManager class reference to initialize.  Exiting...");
     return;
   }
   this.oDBMgr = oDBMgr;
+  this.oAudioController = oAudioController;
   this.oViewMgr = oViewMgr;
 
   this.currentSelection = 0;
   this.lastSelection = -1;
 
-  this.isFirstPlay = true;
   this.playButtonVisibilityState = this.setupPlayButtonVisibilityStates();
 
-  this.setupListeners();
 };
 
 
@@ -29,15 +32,6 @@ OceanInterfaceManager.prototype.setupPlayButtonVisibilityStates = function() {
     array.push( true ); // Play button visible
   }
   return array;
-};
-
-
-OceanInterfaceManager.prototype.setupListeners = function() {
-  // Listen for Audio playback start
-  document.getElementById('audioPlayer').addEventListener('playing',function() { 
-    // console.log("this.isPlaying is TRUE");
-    this.isFirstPlay=false; 
-  },false);
 };
 
 
@@ -64,15 +58,14 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
   if(this.playButtonVisibilityState[this.currentSelection]) {
     document.getElementById('nowPlayingMsg1').innerHTML = "Select a location on the left.";
     document.getElementById('nowPlayingMsg2').innerHTML = "&nbsp;";
-    this.mutedAudioCallback();
+    oAudioController.pause();
     document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage playButtonImage');
     document.getElementById('locBut' + this.currentSelection).setAttribute('class', 'liItem liItemBorderBlue');
   } else {
-    document.getElementById('audioPlayer').setAttribute('src', this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
+    // document.getElementById('audioPlayer').setAttribute('src', this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
     document.getElementById('nowPlayingMsg1').innerHTML = "Now playing ocean sounds from...";
     document.getElementById('nowPlayingMsg2').innerHTML = this.oDBMgr.audioDatabase[this.currentSelection].locationName;
-    this.unmutedAudioCallback();
-    this.loadAudioCallback();
+    oAudioController.loadThenPlay( this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
     document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage pauseButtonImage');
     document.getElementById('locBut' + this.currentSelection).setAttribute('class', 'liItem liItemBorderRed');
   }
@@ -130,17 +123,4 @@ OceanInterfaceManager.prototype.drawPinsWithSelection = function( selected ) {
         $( "#pinId0" ).html( "<div>" + function() { this.oDBMgr.getAudioData_locationName(selected); } + "</div>" );
     });
 
-};
-
-// Plugin Audio Manager Interface
-OceanInterfaceManager.prototype.setLoadAudioCallback = function( cb ) {
-  this.loadAudioCallback = cb;
-};
-
-OceanInterfaceManager.prototype.setUnmutedAudioCallback = function( cb ) {
-  this.unmutedAudioCallback = cb;
-};
-
-OceanInterfaceManager.prototype.setMutedAudioCallback = function( cb ) {
-  this.mutedAudioCallback = cb;
 };

@@ -1,6 +1,6 @@
 var OceanDatabaseManager = function() {
   console.log("* OceanDatabaseManager Init *");
-  this.AUDIOPATH = "audio\\ocean\\";
+  this.AUDIOPATH = "/audio/ocean/";
   this.audioDatabase = [
     { 
       "audioFilename": "164767__rucisko__ocean-waves_Coimbra_Portugal.mp3", 
