@@ -96,7 +96,7 @@ OceanInterfaceManager.prototype.mapMoveRight = function() {
 
 OceanInterfaceManager.prototype.muteToggle = function() {
   $('#muteButton').toggleClass("mutedMode");
-  this.toggleAudioCallback();
+  // !!!!! this.toggleAudioCallback();
 };
 
 

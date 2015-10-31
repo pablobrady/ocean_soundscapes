@@ -7,6 +7,9 @@
     <title>Ocean Soundscapes</title>
 
     <link rel="stylesheet" href="css/main.css">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/oceanSoundscape-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/oceanSoundscape-icon-114x114.png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     
@@ -21,17 +24,16 @@
   <body>
     <div class="headerWrapper">
       <div class="header">
-        <img src="images/oceanSoundscape-icon-64x64.png" alt="Ocean Soundscapes">
+        <img />
         <h1>Ocean Soundscapes</h1>
-        <div class="tagline">Distraction-free Background Audio</div>
 
-
-        <!-- 
-        <button id="leftArrowButton" class="arrowButton disabled">&leftarrow; Previous</button>
-        &nbsp;&nbsp;&nbsp;<button id="rightArrowButton" class="arrowButton"> Next &rightarrow;</button>
-        &nbsp;&nbsp;<button id="muteButton" class="muteButton">Mute</button>
-        </div>
-        -->
+        <span class="topMenuBar">
+          <ul>
+            <li><button id="leftArrowButton" class="headerButton arrowButton disabled">&leftarrow; Previous</button></li>
+            <li><button id="rightArrowButton" class="headerButton arrowButton"> Next &rightarrow;</button></li>
+            <li><button id="muteButton" class="headerButton muteButton">Mute</button></li>
+          </ul>
+        </span>
 
         <audio id='audioPlayerId' preload="none" loop>
           <source id="mp3Source" type="audio/mpeg">
@@ -53,13 +55,13 @@
         </div>
       </div>
       <div class="centralContent">
-        <div class="nowPlaying">
+        <!-- <div class="nowPlaying">
           <div id="nowPlayingMsg1">Select a location on the left.</div>
           <div id="nowPlayingMsg2">&nbsp;</div>
           <div class="worldMap">
             <img id="pinId0" class="pin" src="images/pin3.png" style="position:absolute;top:230px;left:400px;opacity:0">
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
