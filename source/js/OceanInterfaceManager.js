@@ -43,6 +43,7 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
   document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage playButtonImage');
 
   oAudioController.pause();
+  this.setMuteToOff();
 
 
   // Current click handling
@@ -97,6 +98,10 @@ OceanInterfaceManager.prototype.muteToggle = function() {
   this.isMuted ? oAudioController.pause() : oAudioController.play();
 };
 
+OceanInterfaceManager.prototype.setMuteToOff = function() {
+  $('#muteButton').removeClass("mutedMode");
+  this.isMuted = false;
+};
 
 OceanInterfaceManager.prototype.drawPinsWithSelection = function( selected ) {
   // console.log("drawPinsWithSelection - " + selected);

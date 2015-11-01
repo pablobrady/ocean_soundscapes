@@ -13,9 +13,11 @@ var audioPlayerClicked = function( index ) {
 
 var listenersSetup = function() {
   $('#leftArrowButton').click(function(){
+    oInterfaceMgr.setMuteToOff();
     oInterfaceMgr.mapMoveLeft();
   });
   $('#rightArrowButton').click(function(){
+    oInterfaceMgr.setMuteToOff();
     oInterfaceMgr.mapMoveRight();
   });
   $('#muteButton').click(function(){
