@@ -22,29 +22,14 @@ OceanLocationElementCreator.prototype.drawEachOcean = function( index, elementId
 
   var locationName  = audioDatabase[index].locationName;
   var thumbImageURL = audioDatabase[index].thumb_image_URL;
-
-  // var locationHTML = '<div id="locBut' + index + '" class="liItem liItemBorderBlue" style="background: #666 url( \'images/locations/' + thumbImageURL + '\' ) no-repeat center center;background-size: cover;"><image id="locAudioBut' + index + '" onclick="audioPlayerClicked(' + index + ')" class="buttonImage playButtonImage" width="75" height="75" border="0" alt=""></image><span>' + locationName + '</span></div>';
-
-
-
-  var locationHTML = '<li class="oceanChild">' + 
+  var locationHTML = '<li id="oc' + index + '" class="oceanChild" onclick="audioPlayerClicked(' + index + ')">' + 
     '<div class="ocImageDiv" style="background: #666 url( \'images/locations/' + thumbImageURL + '\' ) no-repeat center center;background-size: cover;">'+ 
-     '<div class="ocTextDiv"><p>' + locationName + '</p></div>';
-     '</li>';
+      '<div id="locAudioBut' + index + '" class="buttonImage playButtonImage" style="width:75px;height:75px;" ></div>' + 
+      '<div class="ocTextDiv"><p>' + locationName + '</p></div>';
+      '</li>';
 
-//var locationHTML = '<p>ITEM: ' + index + '</p>';
 
-  // function insertAfter(referenceNode, newNode) {
-  //   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-  // }
-
-  // var el = document.createElement("span");
-  // el.innerHTML = "test";
-  // var div = document.getElementById( elementId );
-  // insertAfter(div, el);
-
+//var locationHTML = '<div class="buttonImage playButtonImage" style="width:75px;height:75px;" ></div>';
 
   $( locationHTML ).insertAfter( elementId );
 };
-
-

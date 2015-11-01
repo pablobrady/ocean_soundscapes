@@ -25,6 +25,7 @@ var OceanInterfaceManager = function(oDBMgr, oAudioController, oViewMgr) {
 };
 
 
+
 OceanInterfaceManager.prototype.setupPlayButtonVisibilityStates = function() {
   var len = this.oDBMgr.getDatabaseLength();
   var array = [];
@@ -35,10 +36,12 @@ OceanInterfaceManager.prototype.setupPlayButtonVisibilityStates = function() {
 };
 
 
+
 OceanInterfaceManager.prototype.playerClicked = function(index) {
   this.currentSelection = index;
-
   document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage playButtonImage');
+
+  oAudioController.pause();
 
   // Current click handling
   var nextState = false; // PLAY IT!
@@ -46,31 +49,23 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
     nextState = !(this.playButtonVisibilityState[this.currentSelection]); // TOGGLE PLAY/PAUSE
   }
 
-  // Reset all PLAY/PAUSE button images / borders
+  // Reset all
   for(var i=0; i<this.playButtonVisibilityState.length; i++) {
-    document.getElementById('locAudioBut' + i).setAttribute('class', 'buttonImage playButtonImage');
-    document.getElementById('locBut' + i).setAttribute('class', 'liItem liItemBorderBlue');
     this.playButtonVisibilityState[i] = true; // reset all play buttons
+    document.getElementById('locAudioBut' + i).setAttribute('class', 'buttonImage playButtonImage'); // Showing play button
   }
-  this.playButtonVisibilityState[this.currentSelection] = nextState; // reset all play buttons
+  this.playButtonVisibilityState[this.currentSelection] = nextState; 
+  console.log("AUDIO ACTIONS:  ", this.playButtonVisibilityState + " CURR: " + this.currentSelection + " NEXT: " + nextState);
 
-  // Control Audio / Page Elements
-  if(this.playButtonVisibilityState[this.currentSelection]) {
-    document.getElementById('nowPlayingMsg1').innerHTML = "Select a location on the left.";
-    document.getElementById('nowPlayingMsg2').innerHTML = "&nbsp;";
-    oAudioController.pause();
-    document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage playButtonImage');
-    document.getElementById('locBut' + this.currentSelection).setAttribute('class', 'liItem liItemBorderBlue');
-  } else {
-    // document.getElementById('audioPlayer').setAttribute('src', this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
-    document.getElementById('nowPlayingMsg1').innerHTML = "Now playing ocean sounds from...";
-    document.getElementById('nowPlayingMsg2').innerHTML = this.oDBMgr.audioDatabase[this.currentSelection].locationName;
+  // Control Audio & Page Elements
+  if(!this.playButtonVisibilityState[this.currentSelection]) {
+    // Play
+console.log("AUDIO CHKPT:  PLAYING");
     oAudioController.loadThenPlay( this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
-    document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage pauseButtonImage');
-    document.getElementById('locBut' + this.currentSelection).setAttribute('class', 'liItem liItemBorderRed');
-  }
+    document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage pauseButtonImage'); // Showing pause button
+   }
 
-  this.drawPinsWithSelection( this.currentSelection );
+  // this.drawPinsWithSelection( this.currentSelection );
 
   this.lastSelection = this.currentSelection;
 };
