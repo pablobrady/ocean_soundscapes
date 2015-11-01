@@ -167,16 +167,25 @@ h2 {
   height: 300px;
   margin: auto;
   flex: 1 0 auto;
-  position: relative; }
-  .oceanChild .ocImageDiv {
-    width: 100%;
-    height: 200px; }
+  position: relative;
+  border: 1px solid #111; }
   .oceanChild .ocTextDiv {
     width: 100%;
     height: 100px;
-    top: 201px;
+    top: 200px;
     left: 0px;
-    position: absolute; }
+    position: absolute;
+    font: 1.9em "Helvetica Neue", Helvetica, Arial, serif;
+    background-color: #b1eaef; }
+    .oceanChild .ocTextDiv P {
+      height: 60px;
+      padding: 10px;
+      margin: 10px;
+      background-color: #fff; }
+
+.ocImageDiv {
+  width: 100%;
+  height: 200px; }
 
 .nowPlaying {
   display: none; }

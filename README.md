@@ -5,7 +5,7 @@ Distraction-free Background Audio
 
 ##### Tech Stack
 
-* HTML5 / CSS3 / Scss
+* HTML5 / CSS3 / Sass
 * Javascript
 * Mocha / Chai Testing
 * HTML5 Audio (Chrome/iOS/iPad compatible)
@@ -18,7 +18,7 @@ Distraction-free Background Audio
 <br>
 ##### Coming soon...
 
-* Next/Prev/Mute buttons (in header)
+* Putting on my UIDesigner hat...  reworking site.
 * (Anim) Zoom-in to large location image.
 * Loading progress indicator.
-* Improvements to the medium-sized layout.
+

@@ -64,7 +64,7 @@ $(document).ready(function (){
 
   // Draw page components
   oLocationElementCreator = new OceanLocationElementCreator( oDatabaseMgr );
-  oLocationElementCreator.drawLocationsStack(); // Draw the available oceans (on the left column)
+  oLocationElementCreator.drawAllOceans(); // Draw the available oceans
 
   // Init a simple HTML5 Audio Controller (iOS/Netscape compatible)
   oAudioController = new PLBAudioController('audioPlayerId');
