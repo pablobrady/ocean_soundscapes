@@ -19,6 +19,7 @@ var OceanInterfaceManager = function(oDBMgr, oAudioController, oViewMgr) {
 
   this.currentSelection = 0;
   this.lastSelection = -1;
+  this.isMuted = false;
 
   this.playButtonVisibilityState = this.setupPlayButtonVisibilityStates();
 
@@ -43,11 +44,13 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
 
   oAudioController.pause();
 
+
   // Current click handling
   var nextState = false; // PLAY IT!
   if(this.currentSelection===this.lastSelection) {
     nextState = !(this.playButtonVisibilityState[this.currentSelection]); // TOGGLE PLAY/PAUSE
   }
+
 
   // Reset all
   for(var i=0; i<this.playButtonVisibilityState.length; i++) {
@@ -55,12 +58,11 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
     document.getElementById('locAudioBut' + i).setAttribute('class', 'buttonImage playButtonImage'); // Showing play button
   }
   this.playButtonVisibilityState[this.currentSelection] = nextState; 
-  console.log("AUDIO ACTIONS:  ", this.playButtonVisibilityState + " CURR: " + this.currentSelection + " NEXT: " + nextState);
+
 
   // Control Audio & Page Elements
   if(!this.playButtonVisibilityState[this.currentSelection]) {
     // Play
-console.log("AUDIO CHKPT:  PLAYING");
     oAudioController.loadThenPlay( this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
     document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage pauseButtonImage'); // Showing pause button
    }
@@ -91,7 +93,8 @@ OceanInterfaceManager.prototype.mapMoveRight = function() {
 
 OceanInterfaceManager.prototype.muteToggle = function() {
   $('#muteButton').toggleClass("mutedMode");
-  // !!!!! this.toggleAudioCallback();
+  this.isMuted = !this.isMuted;
+  this.isMuted ? oAudioController.pause() : oAudioController.play();
 };
 
 
