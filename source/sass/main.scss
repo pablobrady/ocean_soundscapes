@@ -71,7 +71,19 @@ $altTextColor:    $deepBlue;
 
 
 // Constant Vars
-$maxContentWrapperWidth: 320px + 800px + 6px + 20px; // aka. 1146px
+$maxContentWrapperWidth: 1200px;
+
+
+
+
+// CUSTOMIZED HTML ELEMENTS 
+
+body {
+  font: 62.5% "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: $black;
+  box-sizing: border-box;
+  background-color: $lightBlue;
+}
 
 
 h1 {
@@ -85,14 +97,27 @@ h2 {
 }
 
 
-/* Page Elements */
-body {
-  font: 62.5% "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: $black;
-  box-sizing: border-box;
-  background-color: $lightBlue;
+// RESUABLE NEW ELEMENTS
+
+.pageDivider {
+  width: 100%;
+  height: 1px;
+  background-color: darken($medBlue, 20%);
 }
 
+/*
+.liItemBorderBlue {
+  border:solid 3px DeepSkyBlue;
+}
+
+.liItemBorderRed {
+  border:solid 3px $boldRed;
+}
+*/
+
+
+
+// HEADER ELEMENTS
 .headerWrapper {
   width:  100%;
 }
@@ -113,7 +138,7 @@ body {
     top: 50%;
     left: 20px;
     transform: translate(0, -50%);
-    background: url(../images/oceanSoundscape-icon-64x64.jpg) no-repeat;
+    // background: url(../images/oceanSoundscape-icon-64x64.jpg) no-repeat;
     width: 64px;
     height: 64px;
   }
@@ -147,7 +172,7 @@ body {
 }
 
 
-// HEADER / ARROW / MUTE BUTTONS
+// HEADER ELEMENTS - ARROWS & MUTE BUTTONS
 .headerButton {
   position: relative;
   vertical-align: top;
@@ -189,133 +214,51 @@ body {
 
 .arrowButton { display: none; } // MOBILE - TOO NARROW FOR ARROW BUTTONS
 
-/*.arrowButton {
-  width:126px;
-  height:30px;
-  background-color: $buttonGray;
-  color: $black; // Default only
-  &.disabled {
-    color:#999;
-  }
-}
-
-.muteButton {
-  width:60px;
-  height:30px;
-  background-color: $buttonGray;
-  &.mutedMode {
-    color: $buttonGray;
-    background-color: $buttonGray;
-    -webkit-animation-name: mutedMode; /* Chrome, Safari, Opera */
-    /*-webkit-animation-duration: 2s;*/ /* Chrome, Safari, Opera */
-/*    animation-name: mutedMode;
-    animation-duration: 2s;
-    animation-iteration-count: 10000;
-  }
-  @keyframes mutedMode {
-      from {background-color: $boldRed;}
-      to {background-color:   $altTextColor;}
-  }
-}
-*/
+// HEADER ELEMENTS - END --------------------------------------------- //
 
 
-
-.pageDivider {
-  width: 100%;
-  height: 1px;
-  background-color: darken($medBlue, 20%);
-}
-
-
-.loc-flex-container {
-  width: 100%;
-  min-width: 320px;
-  overflow: scroll;
-  height: 550px;
-  background-color: Silver;
-}
-
+// CONTENT AREA - MAPS / NOW PLAYING
 
 .contentWrapper {
-  width:  100%;
-  height: 550px;
-  background-color: lighten($medBlue, 10%);
+  // width:  100%;
+  // height: 550px;
+  background-color: lighten(pink, 10%);
+}
 
-  .locationWrapper {
-    min-width: 320px;
-    height: 550px;
-    float:left;
+.flexOceansContainer {
+  display: flex;
+  flex-flow:  row wrap;
+  justify-conten: center;
 
-    .locationHeader {
-      height: 25px;
-      background-color: $deepBlue;
-      color:white;
-      margin:auto;
-      text-align:center;
-      line-height:25px;
-      font-size: 1.6em;
-    }
+}
 
-    .locationNav {
-      height: 525px;
-      background-color: $medBlue;
+.oceanChild {
+  min-width: 300px;
+  max-width: 600px;
+  height: 300px;
+  margin: auto;
+  flex: 1 0 auto;
+  position: relative;
 
-      .liItem {
-        height:200px;
-        border:solid 3px DeepSkyBlue;
-        position: relative;
+  .ocImageDiv {
+    width:100%;
+    height:200px;
+  }
 
-        .buttonImage {
-          position:absolute;
-          left: 4px;
-          bottom: 4px;
-          border: none;
-        }
+  .ocTextDiv {
+    width:100%;
+    height:100px;
+    top:201px;
+    left:0px;
+    position: absolute;
 
-        SPAN {
-          position: absolute;
-          width: 70.3125%;
-          height: 55px;
-          top: 121px;
-          left: 79px;
-          color: white;
-          background-color: rgba(0, 0, 0, 0.5);
-          font-size: 1.5em;
-          vertical-align: center;
-          padding: 10px 0 10px 10px;
-          overflow: scroll;
-
-          // Center location title text in SPAN container
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-        }
-      }
-    }
   }
 }
 
-.liItemBorderBlue {
-  border:solid 3px DeepSkyBlue;
-}
-
-.liItemBorderRed {
-  border:solid 3px $boldRed;
-}
 
 
 
-// CONTENT AREA - NOW PLAYING
-
-.centralContent {
-  float: left;
-  position: relative;
-  top: 0;
-  left: 0;
-  background-color: $deepOrange;
-}
-
+// MAPS
 
 .nowPlaying {
   display: none;  // Not visible on mobile
@@ -406,15 +349,8 @@ body {
   .contentWrapper {
     // mobile defaults.
     width:  100%;
-    height: 550px;
-    background-color: lighten($medBlue, 10%);
-  }
-
-  .locationWrapper { width:320px; }     // snap back to 320px
-
-  .centralContent {
-    position: relative;
-    background-color: initial;
+    //height: 550px;
+    //background-color: lighten($medBlue, 10%);
   }
 
   .nowPlaying {
@@ -452,10 +388,6 @@ body {
     margin: auto;
   }
   
-  .centralContent {
-    background-color: $deepOrange;
-  }
-
   .nowPlaying {
     width: 100%;
     height: 50px;
