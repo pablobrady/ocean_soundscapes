@@ -75,12 +75,12 @@ $maxContentWrapperWidth: 1200px;
 
 
 // EXPORTED COLORS
-.c_ocean0 { border: 1px solid #f00; }
-.c_ocean1 { border: 1px solid $seafoam; }
-.c_ocean2 { border: 1px solid $seafoam; }
-.c_ocean3 { border: 1px solid $seafoam; }
-.c_ocean4 { border: 1px solid $seafoam; }
-.c_ocean5 { border: 1px solid $seafoam; }
+.c_ocean0 { background-color: #f00; }
+.c_ocean1 { background-color: $seafoam; }
+.c_ocean2 { background-color: $seafoam; }
+.c_ocean3 { background-color: $seafoam; }
+.c_ocean4 { background-color: $seafoam; }
+.c_ocean5 { background-color: $seafoam; }
 
 
 // CUSTOMIZED HTML ELEMENTS 
@@ -270,6 +270,13 @@ h2 {
 .ocImageDiv {
   width:100%;
   height:200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.blendModeEnabled {
+  background-blend-mode: soft-light;
 }
 
 .ocPlaying {

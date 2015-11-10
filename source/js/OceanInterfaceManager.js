@@ -72,6 +72,14 @@ OceanInterfaceManager.prototype.setupPlayButtonVisibilityStates = function() {
 
 // INTERFACE EVENT HANDLING
 
+OceanInterfaceManager.prototype.playerMouseover = function(index) {
+  $('#oc' + index + '.oceanChild .ocImageDiv' ).removeClass("blendModeEnabled");
+};
+
+OceanInterfaceManager.prototype.playerMouseleave = function(index) {
+  $('#oc' + index + '.oceanChild .ocImageDiv' ).addClass("blendModeEnabled");
+};
+
 OceanInterfaceManager.prototype.playerClicked = function(index) {
   this.currentSelection = index;
   document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage playButtonImage');
@@ -107,13 +115,6 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
   this.lastSelection = this.currentSelection;
 };
 
-OceanInterfaceManager.prototype.playerMouseover = function(index) {
-  console.log("playerMouseover!");
-};
-
-OceanInterfaceManager.prototype.playerMouseleave = function(index) {
-  console.log("playerMouseleave!");
-};
 
 
 // CONTROLLING THE AUDIO PLAYER
