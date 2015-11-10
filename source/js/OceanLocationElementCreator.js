@@ -38,16 +38,18 @@ OceanLocationElementCreator.prototype.drawEachOcean = function( index, elementId
   var locationName  = audioDatabase[index].locationName;
   var thumbImageURL = audioDatabase[index].thumb_image_URL;
 
-console.log("getOceanColor(" + index + ") = " + this.getOceanColor(index) );
-var oceanColor = this.getOceanColor(index);
-
   var locationHTML = '<li id="oc' + index + '" class="oceanChild">' + 
     '<div class="ocImageDiv">'+ 
-      '<div id="locAudioBut' + index + '" class="buttonImage playButtonImage" style="width:75px;height:75px;" ></div>' + 
+      '<div id="locAudioBut' + index + '" class="buttonImage" style="width:75px;height:75px;" ></div>' + 
       '<div class="ocTextDiv"><p>' + locationName + '</p></div></li>';
 
 
   $( locationHTML ).insertAfter( elementId );
+
+
+
+  // Set initial Play Button
+  $('#locAudioBut' + index).addClass('playButtonImage');
 
   // Set location image
   $('#oc' + index + '.oceanChild .ocImageDiv').css({
