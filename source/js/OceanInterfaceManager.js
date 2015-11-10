@@ -95,7 +95,11 @@ OceanInterfaceManager.prototype.mapMoveRight = function() {
 OceanInterfaceManager.prototype.muteToggle = function() {
   $('#muteButton').toggleClass("mutedMode");
   this.isMuted = !this.isMuted;
-  this.isMuted ? oAudioController.pause() : oAudioController.play();
+  if( this.isMuted ) {
+    oAudioController.pause();
+  } else {
+    oAudioController.play();
+  }
 };
 
 OceanInterfaceManager.prototype.setMuteToOff = function() {
