@@ -33,7 +33,7 @@ OceanLocationElementCreator.prototype.drawEachOcean = function( index, elementId
 console.log("getOceanColor(" + index + ") = " + this.getOceanColor(index) );
 var oceanColor = this.getOceanColor(index);
 
-  var locationHTML = '<li id="oc' + index + '" class="oceanChild" onclick="audioPlayerClicked(' + index + ')">' + 
+  var locationHTML = '<li id="oc' + index + '" class="oceanChild">' + 
     '<div class="ocImageDiv" style="background: #666 url( \'images/locations/' + thumbImageURL + '\' ) no-repeat center center;background-size: cover;">'+ 
       '<div id="locAudioBut' + index + '" class="buttonImage playButtonImage" style="width:75px;height:75px;" ></div>' + 
       '<div class="ocTextDiv"><p>' + locationName + '</p></div></li>';
@@ -42,4 +42,10 @@ var oceanColor = this.getOceanColor(index);
 //var locationHTML = '<div class="buttonImage playButtonImage" style="width:75px;height:75px;" ></div>';
 
   $( locationHTML ).insertAfter( elementId );
+
+  //$( 'oc' + index ).on('click', 'button', function() { audioPlayerClicked(index) } );
+  // $( '.oceanChild' ).on('click', 'button', function() { console.log('mouse-over!'); } );  // function() { audioPlayerClicked(index) }
+
+  $( '.oceanChild:nth('+index+')' ).on('click', function() { audioPlayerClicked(index); } );
+
 };

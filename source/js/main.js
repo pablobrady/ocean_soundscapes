@@ -7,9 +7,9 @@ var oInterfaceMgr;
 // ------ //
 
 var audioPlayerClicked = function( index ) {
+  console.log(">> audioPlayerClicked( " + index + ")!!!");
   oInterfaceMgr.playerClicked( index );
 };
-
 
 var listenersSetup = function() {
   $('#leftArrowButton').click(function(){
