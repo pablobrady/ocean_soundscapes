@@ -21,11 +21,44 @@ var OceanInterfaceManager = function(oDBMgr, oAudioController, oViewMgr) {
   this.lastSelection = -1;
   this.isMuted = false;
 
+  // Interface initialization
   this.playButtonVisibilityState = this.setupPlayButtonVisibilityStates();
+  this.setupAllOceanListeners();
 
 };
 
 
+OceanInterfaceManager.prototype.setupAllOceanListeners = function() {
+  var len = this.oDBMgr.getDatabaseLength();
+  var bindThis = this;
+
+  var helpClickAudioPlayer = function( index ) {
+    return function() {
+      bindThis.playerClicked( index );
+    }
+  };
+
+  var helpMouseoverAudioPlayer = function( index ) {
+    return function() {
+      bindThis.playerMouseover( index );
+    }
+  };
+
+  var helpMouseleaveAudioPlayer = function( index ) {
+    return function() {
+      bindThis.playerMouseleave( index );
+    }
+  };
+
+
+
+  for(var index=0; index<len; index++) {
+    // Each ocean listens for...
+    $( '.oceanChild:nth('+index+')' ).on('click', helpClickAudioPlayer(index) );
+    $( '.oceanChild:nth('+index+')' ).on('mouseover', helpMouseoverAudioPlayer(index) );
+    $( '.oceanChild:nth('+index+')' ).on('mouseleave', helpMouseleaveAudioPlayer(index) );
+  }
+};
 
 OceanInterfaceManager.prototype.setupPlayButtonVisibilityStates = function() {
   var len = this.oDBMgr.getDatabaseLength();
@@ -37,6 +70,7 @@ OceanInterfaceManager.prototype.setupPlayButtonVisibilityStates = function() {
 };
 
 
+// INTERFACE EVENT HANDLING
 
 OceanInterfaceManager.prototype.playerClicked = function(index) {
   this.currentSelection = index;
@@ -73,6 +107,31 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
   this.lastSelection = this.currentSelection;
 };
 
+OceanInterfaceManager.prototype.playerMouseover = function(index) {
+  console.log("playerMouseover!");
+};
+
+OceanInterfaceManager.prototype.playerMouseleave = function(index) {
+  console.log("playerMouseleave!");
+};
+
+
+// CONTROLLING THE AUDIO PLAYER
+
+OceanInterfaceManager.prototype.muteToggle = function() {
+  $('#muteButton').toggleClass("mutedMode");
+  this.isMuted = !this.isMuted;
+  if( this.isMuted ) {
+    oAudioController.pause();
+  } else {
+    oAudioController.play();
+  }
+};
+
+OceanInterfaceManager.prototype.setMuteToOff = function() {
+  $('#muteButton').removeClass("mutedMode");
+  this.isMuted = false;
+};
 
 
 // MAP MANIPULATION METHODS
@@ -92,20 +151,6 @@ OceanInterfaceManager.prototype.mapMoveRight = function() {
   this.playerClicked(this.currentSelection);
 };
 
-OceanInterfaceManager.prototype.muteToggle = function() {
-  $('#muteButton').toggleClass("mutedMode");
-  this.isMuted = !this.isMuted;
-  if( this.isMuted ) {
-    oAudioController.pause();
-  } else {
-    oAudioController.play();
-  }
-};
-
-OceanInterfaceManager.prototype.setMuteToOff = function() {
-  $('#muteButton').removeClass("mutedMode");
-  this.isMuted = false;
-};
 
 OceanInterfaceManager.prototype.drawPinsWithSelection = function( selected ) {
   // console.log("drawPinsWithSelection - " + selected);

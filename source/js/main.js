@@ -64,12 +64,12 @@ $(document).ready(function (){
   // Class Initialization (Psuedoclassical)
   oDatabaseMgr  = new OceanDatabaseManager();
 
+  // Init a simple HTML5 Audio Controller (iOS/Netscape compatible)
+  oAudioController = new PLBAudioController('audioPlayerId');
+
   // Draw page components
   oLocationElementCreator = new OceanLocationElementCreator( oDatabaseMgr );
   oLocationElementCreator.drawAllOceans(); // Draw the available oceans
-
-  // Init a simple HTML5 Audio Controller (iOS/Netscape compatible)
-  oAudioController = new PLBAudioController('audioPlayerId');
 
   // Handle user input (clicks & arrow key presses)
   oInterfaceMgr = new OceanInterfaceManager( oDatabaseMgr, oAudioController, oLocationElementCreator );

@@ -1,10 +1,12 @@
 var OceanLocationElementCreator = function( oDBMgr ) {
   console.log('* OceanViewManger Init *');
   if( !oDBMgr ) { 
-    console.error('ERROR - OceanViewManager requires an OceanDatabaseManager() reference to initialize.  Exiting...');
+    console.error('ERROR - OceanViewManager requires an OceanDatabaseManager() reference to initialize.  Exiting OceanLocationElementCreator()...');
     return;
   }
   this.oDBMgr = oDBMgr;
+
+  // Exported by Sass
   this.colorArray = ['c_ocean0', 'c_ocean1', 'c_ocean2', 'c_ocean3', 'c_ocean4', 'c_ocean5'];
 };
 
@@ -42,10 +44,5 @@ var oceanColor = this.getOceanColor(index);
 //var locationHTML = '<div class="buttonImage playButtonImage" style="width:75px;height:75px;" ></div>';
 
   $( locationHTML ).insertAfter( elementId );
-
-  //$( 'oc' + index ).on('click', 'button', function() { audioPlayerClicked(index) } );
-  // $( '.oceanChild' ).on('click', 'button', function() { console.log('mouse-over!'); } );  // function() { audioPlayerClicked(index) }
-
-  $( '.oceanChild:nth('+index+')' ).on('click', function() { audioPlayerClicked(index); } );
 
 };
