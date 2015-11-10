@@ -113,6 +113,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha');
 
 
+  grunt.registerTask('dev', function(arg) {
+    console.log("ABORTED:  Use the form 'grunt build:dev' or 'grunt build:dist'.");
+  });
+
   grunt.registerTask('build', function(arg) {
     arg = arg || 'dev';
     if(arg==='dist') {
@@ -122,7 +126,7 @@ module.exports = function(grunt) {
       // Skip uglify, and do concat.
       grunt.task.run(['jshint','concat','copy','watch']);
     } else {
-      console.log("HINT:  Use the form 'grunt build:dev' or 'grunt build:dist'.");
+      console.log("ABORTED:  Use the form 'grunt build:dev' or 'grunt build:dist'.");
     }
   });
 
