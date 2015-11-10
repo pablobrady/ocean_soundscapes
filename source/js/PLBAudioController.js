@@ -16,6 +16,7 @@
 var PLBAudioController = function( playerId ) {
   this.playerId = playerId;
   this.audioPlayerElement = document.getElementById( playerId );
+  this.isPlaying = false;
 };
 
 PLBAudioController.prototype.loadThenPlay = function( anMP3AudioURL ) {
@@ -26,13 +27,14 @@ PLBAudioController.prototype.loadThenPlay = function( anMP3AudioURL ) {
 
   this.audioPlayerElement.load();
   this.audioPlayerElement.play();
+  this.isPlaying = true;  // Playback repeats, so playback can never end.
 
   return true;
 };
 
 PLBAudioController.prototype.pause = function() {
   this.audioPlayerElement.pause();
-
+  this.isPlaying = false;
   return true;
 };
 

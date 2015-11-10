@@ -73,10 +73,15 @@ OceanInterfaceManager.prototype.setupPlayButtonVisibilityStates = function() {
 // INTERFACE EVENT HANDLING
 
 OceanInterfaceManager.prototype.playerMouseover = function(index) {
+  if( this.oAudioController.isPlaying && this.currentSelection===index ) return; // No changes during "currentSelection's" playback.
+
   $('#oc' + index + '.oceanChild .ocImageDiv' ).removeClass("blendModeEnabled");
+
 };
 
 OceanInterfaceManager.prototype.playerMouseleave = function(index) {
+  if( this.oAudioController.isPlaying && this.currentSelection===index ) return; // No changes during "currentSelection's" playback.
+
   $('#oc' + index + '.oceanChild .ocImageDiv' ).addClass("blendModeEnabled");
 };
 
@@ -99,6 +104,7 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
   for(var i=0; i<this.playButtonVisibilityState.length; i++) {
     this.playButtonVisibilityState[i] = true; // reset all play buttons
     document.getElementById('locAudioBut' + i).setAttribute('class', 'buttonImage playButtonImage'); // Showing play button
+    $('#oc' + i + '.oceanChild .ocImageDiv' ).addClass("blendModeEnabled");
   }
   this.playButtonVisibilityState[this.currentSelection] = nextState; 
 
@@ -108,6 +114,7 @@ OceanInterfaceManager.prototype.playerClicked = function(index) {
     // Play
     oAudioController.loadThenPlay( this.oDBMgr.getAudioData_audioFileNameWithPath(this.currentSelection) );
     document.getElementById('locAudioBut' + this.currentSelection).setAttribute('class', 'buttonImage pauseButtonImage'); // Showing pause button
+    $('#oc' + this.currentSelection + '.oceanChild .ocImageDiv' ).removeClass("blendModeEnabled");
    }
 
   // this.drawPinsWithSelection( this.currentSelection );
