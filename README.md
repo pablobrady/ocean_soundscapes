@@ -4,12 +4,15 @@ Distraction-free Background Audio
 
 
 ##### Tech Stack
-* HTML5 / CSS3 / Sass
+* HTML5 / CSS3 / Sass / Responsive (phone/tablet/desktop)
 * Javascript
 * Mocha / Chai Testing
 * HTML5 Audio (Chrome/iOS/iPad compatible)
-* NodeJS
+* NodeJS / Grunt
 
+##### Installation
+1. ```npm install -g grunt-cli``` (if you don't have Grunt already)
+2. ```npm install```
 
 ##### Live Demo
 [http://www.oceansoundscapes.com](http://www.oceansoundscapes.com)
@@ -17,7 +20,6 @@ Distraction-free Background Audio
 <br>
 <!-- 
 ##### Coming soon...
-* Adding more visual details.
 * (Anim) Zoom-in to large location image.
 * Loading progress indicator.
 -->
