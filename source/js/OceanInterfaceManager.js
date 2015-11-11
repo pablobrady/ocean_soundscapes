@@ -35,19 +35,19 @@ OceanInterfaceManager.prototype.setupAllOceanListeners = function() {
   var helpClickAudioPlayer = function( index ) {
     return function() {
       bindThis.playerClicked( index );
-    }
+    };
   };
 
   var helpMouseoverAudioPlayer = function( index ) {
     return function() {
       bindThis.playerMouseover( index );
-    }
+    };
   };
 
   var helpMouseleaveAudioPlayer = function( index ) {
     return function() {
       bindThis.playerMouseleave( index );
-    }
+    };
   };
 
 
@@ -87,7 +87,7 @@ OceanInterfaceManager.prototype.playerMouseleave = function(index) {
 
 OceanInterfaceManager.prototype.playerClicked = function(index) {
   this.currentSelection = index;
-  $('#locAudioBut' + this.currentSelection).removeClass('pauseButtonImage').addClass('playButtonImage')
+  $('#locAudioBut' + this.currentSelection).removeClass('pauseButtonImage').addClass('playButtonImage');
 
   oAudioController.pause();
   this.setMuteToOff();
